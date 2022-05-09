@@ -1,0 +1,10 @@
+CRSH  Crushing
+PIER  Piercing
+SLSH  Slashing
+THRW  Throw
+FIRE  Pyretic
+AETH  Aether
+ARCN  Arcane
+CHLL  Chill
+SPRT  Spirit
+<@!>

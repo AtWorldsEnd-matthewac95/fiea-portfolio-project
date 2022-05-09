@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abrv/abbreviatedkey.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="abrv/abrv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models/battlerstat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models/damagetype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models/skillelement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models/skillelementgroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc\loaddata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc\messageformats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\damageinclination.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\skill.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc\stringutils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external\tinyxml\tinyxml2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc\xmlload.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\damagesource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\equipment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="store\gamelovstorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\equipmenttype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\equipmentslots.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\elementalaffinities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\damageresistances.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\battler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc\damage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="store\gamexlostorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sfml\awesprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="state\gamestate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="state\battlerdecision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sfml\textbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sfml\awedrawable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sfml\battlemenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="store\gamesfmlstorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="state\gamestatemachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="state\gamebattleinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="state\gamescene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="abrv/abbreviatedkey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="abrv/abrv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models/battlerstat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models/damagetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models/skillelement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models/skillelementgroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\loaddata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\messageformats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\damageinclination.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\skill.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\stringutils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\tinyxml\tinyxml2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\xmlload.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\equipment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\lovpairs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\damagesource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="store\gamelovstorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\battler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\equipmenttype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\equipmentslots.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="store\gamexlostorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\elementalaffinities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\damageresistances.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="misc\damage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sfml\awesprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="state\gamestate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="state\battlerdecision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sfml\textbox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sfml\awedrawable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sfml\battlemenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="store\gamesfmlstorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="state\gamestatemachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="state\gamebattleinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="state\gamescene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\battlerstat.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="res\damagetype.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="res\skillelement.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="res\skillelementgroup.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="res\damageinclination.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="res\equipmenttype.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="res\data.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\final.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\woods.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\enemies.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\eppler.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\remi.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\skills.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\levelup-eppler.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\levelup-remi.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\temple.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="res\novem___.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\cursor.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="res\fire.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="res\magic.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="res\pepsi.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="res\save.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="res\skitter.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="res\slash.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="res\wind.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="res\fight2-export-comb.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\7heros-export.ogg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\moments-peace-export.ogg">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

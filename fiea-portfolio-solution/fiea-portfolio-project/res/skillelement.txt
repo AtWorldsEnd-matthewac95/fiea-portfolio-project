@@ -1,0 +1,25 @@
+DGGR  Daggers
+LSWD  Long Swords
+GSWD  Great Swords
+VSWD  Curved Swords
+ARFR  Arcane Fire
+AEFR  Aetherial Fire
+BOTM  Botamancy
+ARWT  Arcane Water
+HYDR  Hydromancy
+WFIN  Water Fins
+SWAN  Small Wands
+MSTV  Magic Staves
+ENBC  Enchanted Branches
+BCLW  Bestial Claws
+BTAX  Battle Axes
+HORN  Bestial Horns
+WDAX  Woodsman Axes
+GTAX  Giant Axes
+USWD  Umbral Swords
+ARDK  Arcane Darkness
+SWGL  Swordgale
+WNDW  Wind Wielding
+TIAR  Tiaras
+WRSB  Wrist Blades
+<@!>

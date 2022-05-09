@@ -1,0 +1,25 @@
+F  SWDS  Swords
+DGGR  LSWD  GSWD  VSWD  USWD
+F  PYRO  Pyromancy
+ARFR  AEFR
+F  ASVL  Aestival
+AEFR  BOTM
+F  WATR  Water
+ARWT  HYDR  WFIN
+F  SMCL  Simulcral
+ARFR  ARWT  ARDK
+F  WANS  Wands
+SWAN  MSTV  ENBC
+F  AXES  Axes
+BTAX  WDAX  GTAX
+F  CRNL  Carnal
+BCLW  HORN
+F  UBRL  Umbral
+USWD  ARDK
+F  WIND  Wind
+SWGL  WNDW
+F  CRWN  Crown
+HORN  TIAR
+F  CLAW  Claws
+BCLW  WRSB
+<@!>

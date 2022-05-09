@@ -1,0 +1,3 @@
+PHYS  Physical
+MAGI  Magical
+<@!>

@@ -1,0 +1,182 @@
+<Settings>
+    <DefaultEquipmentSlot key="ACCS">4</DefaultEquipmentSlot>
+    <DefaultEquipmentSlot key="BODY">1</DefaultEquipmentSlot>
+    <DefaultEquipmentSlot key="CARS">2</DefaultEquipmentSlot>
+    <DefaultEquipmentSlot key="HAND">1</DefaultEquipmentSlot>
+    <DefaultEquipmentSlot key="HEAD">1</DefaultEquipmentSlot>
+    <DefaultEquipmentSlot key="WEPN">2</DefaultEquipmentSlot>
+    <DamageInclinationStats key="PHYS" attack="STRN  FINS" defend="DEFN" />
+    <DamageInclinationStats key="MAGI" attack="MYST  WILL" defend="AURA" />
+</Settings>
+
+<Skill name="Sword Slash">
+    <Damage>
+        <BaseDamage inclination="PHYS">10</BaseDamage>
+        <StatScaling inclination="PHYS" key="BATK  STRN  FINS">1.000000</StatScaling>
+        <ElementBinding inclination="PHYS" group="true" key="SWDS" damagetype="SLSH">1.000000</ElementBinding>
+    </Damage>
+</Skill>
+
+<Skill name="Sword Stab">
+    <Damage>
+        <BaseDamage inclination="PHYS">5</BaseDamage>
+        <StatScaling inclination="PHYS" key="BATK  STRN">0.800000</StatScaling>
+        <StatScaling inclination="PHYS" key="FINS">1.200000</StatScaling>
+        <ElementBinding inclination="PHYS" group="true" key="SWDS" damagetype="PIER" penetrating="true">1.000000</ElementBinding>
+    </Damage>
+</Skill>
+
+<Skill name="Burning Sword">
+    <Damage>
+        <BaseDamage inclination="PHYS">5</BaseDamage>
+        <StatScaling inclination="PHYS" key="BATK  STRN  FINS">0.750000</StatScaling>
+        <ElementBinding inclination="PHYS" group="true" key="SWDS" damagetype="SLSH">1.000000</ElementBinding>
+    </Damage>
+    <Damage>
+        <BaseDamage inclination="PHYS">5</BaseDamage>
+        <StatScaling inclination="PHYS" key="BATK">0.250000</StatScaling>
+        <StatScaling inclination="PHYS" key="FINS">0.500000</StatScaling>
+        <ElementBinding inclination="PHYS" group="true" key="SWDS" damagetype="FIRE">1.000000</ElementBinding>
+    </Damage>
+</Skill>
+
+<Skill name="Fireball">
+    <Damage>
+        <BaseDamage inclination="MAGI">10</BaseDamage>
+        <StatScaling inclination="MAGI" key="BATN  MYST  WILL">1.000000</StatScaling>
+        <ElementBinding inclination="MAGI" group="true" key="PYRO" damagetype="FIRE">0.800000</ElementBinding>
+        <ElementBinding inclination="MAGI" group="true" key="ASVL" damagetype="AETH">0.200000</ElementBinding>
+    </Damage>
+</Skill>
+
+<Skill name="Aether Branch">
+    <Damage>
+        <BaseDamage inclination="MAGI">5</BaseDamage>
+        <StatScaling inclination="MAGI" key="BATN">0.900000</StatScaling>
+        <StatScaling inclination="MAGI" key="MYST">0.800000</StatScaling>
+        <StatScaling inclination="MAGI" key="WILL">1.000000</StatScaling>
+        <ElementBinding inclination="MAGI" group="true" key="ASVL" damagetype="AETH">0.100000</ElementBinding>
+        <ElementBinding inclination="MAGI" group="false" key="BOTM" damagetype="AETH">0.450000</ElementBinding>
+        <ElementBinding inclination="MAGI" group="false" key="BOTM" damagetype="PIER" penetrating="true">0.450000</ElementBinding>
+    </Damage>
+    <Damage inclination="MAGI">
+        <BaseDamage inclination="PHYS">10</BaseDamage>
+        <StatScaling inclination="PHYS" key="BATN  MYST  WILL">0.100000</StatScaling>
+        <ElementBinding inclination="PHYS" group="true" key="ASVL" damagetype="AETH">0.200000</ElementBinding>
+        <ElementBinding inclination="PHYS" group="false" key="BOTM" damagetype="PIER">0.800000</ElementBinding>
+    </Damage>
+</Skill>
+
+<Skill name="Crushing Wave">
+    <Damage>
+        <BaseDamage inclination="MAGI">5</BaseDamage>
+        <StatScaling inclination="MAGI" key="BATN">0.750000</StatScaling>
+        <StatScaling inclination="MAGI" key="MYST">1.100000</StatScaling>
+        <StatScaling inclination="MAGI" key="WILL">0.400000</StatScaling>
+        <ElementBinding inclination="MAGI" group="true" key="SMCL" damagetype="ARCN">0.750000</ElementBinding>
+        <ElementBinding inclination="MAGI" group="true" key="WATR" damagetype="CHLL" penetrating="true">0.250000</ElementBinding>
+        <ElementBinding inclination="MAGI" group="true" key="WATR" damagetype="CRSH">0.100000</ElementBinding>
+    </Damage>
+    <Damage inclination="MAGI">
+        <BaseDamage inclination="PHYS">10</BaseDamage>
+        <StatScaling inclination="PHYS" key="BATN  WILL">0.350000</StatScaling>
+        <StatScaling inclination="PHYS" key="MYST">0.550000</StatScaling>
+        <ElementBinding inclination="PHYS" group="true" key="WATR" damagetype="CRSH">0.400000</ElementBinding>
+        <ElementBinding inclination="PHYS" group="false" key="ARWT" damagetype="CRSH">0.600000</ElementBinding>
+    </Damage>
+</Skill>
+
+<Skill name="Wand Bolt">
+    <Damage>
+        <BaseDamage inclination="MAGI">10</BaseDamage>
+        <StatScaling inclination="MAGI" key="BATN  MYST">1.000000</StatScaling>
+        <ElementBinding inclination="MAGI" group="true" key="WANS" damagetype="ARCN">1.000000</ElementBinding>
+    </Damage>
+</Skill>
+
+<Equipment name="Soldier's Sword" key="WEPN">
+    <ElementConversion groupkey="SWDS" elekey="LSWD" />
+    <Stats>
+        <StatValue key="BATK">15</StatValue>
+    </Stats>
+<Equipment>
+
+<Equipment name="Kindling Cloudstone" key="WEPN">
+    <ElementConversion groupkey="ASVL" elekey="AEFR" />
+    <ElementConversion groupkey="PYRO" elekey="AEFR" />
+    <Stats>
+        <StatValue key="BATN">15</StatValue>
+    </Stats>
+</Equipment>
+
+<Equipment name="Vulkrut Branch" key="WEPN">
+    <ElementConversion groupkey="ASVL" elekey="BOTM" />
+    <ElementConversion groupkey="PYRO" elekey="AEFR" />
+    <ElementConversion groupkey="WANS" elekey="ENBC" />
+    <Stats>
+        <StatValue key="BATK">5</StatValue>
+        <StatValue key="BATN">5</StatValue>
+    </Stats>
+</Equipment>
+
+<Equipment name="Thomas's Sword" key="WEPN">
+    <ElementConversion groupkey="SWDS" elekey="USWD" />
+    <ElementConversion groupkey="UBRL" elekey="USWD" />
+    <ElementConversion groupkey="WIND" elekey="SWGL" />
+</Equipment>
+
+<Equipment name="War Axe" key="WEPN">
+    <ElementConversion groupkey="AXES" elekey="BTAX" />
+    <Stats>
+        <StatValue key="BATK">10</StatValue>
+    </Stats>
+</Equipment>
+
+<Equipment name="Minotaur Claws" key="HAND">
+    <ElementConversion groupkey="CRNL" elekey="BCLW" />
+</Equipment>
+
+<Equipment name="Minotaur Horns" key="HEAD">
+    <ElementConversion groupkey="CRNL" elekey="HORN" />
+</Equipment>
+
+<Battler name="Eppler" priority="2">
+    <StartingEquipment name="Soldier's Sword" />
+    <Stats>
+        <StatValue key="MXHP">200</StatValue>
+        <StatValue key="STRN">20</StatValue>
+        <StatValue key="FINS">10</StatValue>
+        <StatValue key="DEFN">20</StatValue>
+        <StatValue key="MYST">5</StatValue>
+        <StatValue key="WILL">10</StatValue>
+        <StatValue key="AURA">20</StatValue>
+    </Stats>
+</Battler>
+
+<Battler name="Remi" priority="1">
+    <StartingEquipment name="Vulkrut Branch" />
+    <Stats>
+        <StatValue key="MXHP">150</StatValue>
+        <StatValue key="STRN">5</StatValue>
+        <StatValue key="FINS">10</StatValue>
+        <StatValue key="DEFN">20</StatValue>
+        <StatValue key="MYST">20</StatValue>
+        <StatValue key="WILL">10</StatValue>
+        <StatValue key="AURA">20</StatValue>
+    </Stats>
+</Battler>
+
+<Battler name="Minotaur" priority="3">
+    <StartingEquipment name="War Axe" />
+    <StartingEquipment name="Minotaur Claws" />
+    <StartingEquipment name="Minotaur Horns" />
+    <Stats>
+        <StatValue key="MXHP">500</StatValue>
+        <StatValue key="STRN">20</StatValue>
+        <StatValue key="FINS">10</StatValue>
+        <StatValue key="DEFN">20</StatValue>
+        <StatValue key="MYST">5</StatValue>
+        <StatValue key="WILL">10</StatValue>
+        <StatValue key="AURA">20</StatValue>
+    </Stats>
+</Battler>

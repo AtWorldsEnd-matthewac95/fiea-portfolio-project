@@ -1,0 +1,12 @@
+MXHP  Max HP
+STRN  Strength
+DEFN  Defense
+FINS  Finesse
+MYST  Mysticism
+AURA  Aura
+WILL  Will
+BATK  Bonus Attack
+BATN  Bonus Attunement
+BDEF  Bonus Defense
+BAUR  Bonus Aura
+<@!>

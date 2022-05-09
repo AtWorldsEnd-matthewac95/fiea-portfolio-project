@@ -1,0 +1,7 @@
+ACCS  Accessory
+BODY  Body
+CARS  Companion-Arms
+HAND  Hands
+HEAD  Head
+WEPN  Weapon
+<@!>
