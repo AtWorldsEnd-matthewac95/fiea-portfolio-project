@@ -6,3 +6,5 @@ tinyxml2.h and tinyxml.cpp were not created by the author of this project. See b
 Third party libraries used:
 * SFML - https://www.sfml-dev.org/documentation/2.5.1/
 * timyxml2 - https://github.com/leethomason/tinyxml2
+
+"AWE" is the name of the namespace into which I put everything I wrote.
