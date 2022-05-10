@@ -15,3 +15,11 @@ Third party libraries used:
 * timyxml2 - https://github.com/leethomason/tinyxml2
 
 "AWE" is the name of the namespace into which I put everything I wrote.
+
+Art & music credits:
+* Romancing SaGa 3 - Minotaur, "Eppler" (Knight character), "Remi" (Magic character)
+* Romancing SaGa 2 - "Lord Thomas" (Swordsman), 3rd song when fighting the swordsman (7 heroes battle)
+* Final Fantasy 7 - Ability sprites, ability sounds, menu sounds
+* Final Fantasy 4 - 1st song when fighting the minotaur (Battle 2)
+* Dark Souls 1 - 2nd song when upgrading characters (A Moment's Peace)
+* Lunar 2 Eternal Blue - All battle backgrounds
