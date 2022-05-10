@@ -1,5 +1,4 @@
 #include "abrv.h"
-#include <format>
 
 namespace AWE {
     FourLetterAbbreviation::FourLetterAbbreviation() : _first(0), _second(0), _third(0), _fourth(0), _long(0) {}
