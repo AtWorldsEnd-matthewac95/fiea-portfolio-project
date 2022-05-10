@@ -360,7 +360,7 @@ namespace AWE {
     GameState_Battle_DamageCalculation::GameState_Battle_DamageCalculation(const DamageCalculator& calc, TextBox& damagetext, TextBox& prompttext)
         : GameState(), _isAcknowledged(false), _calc(&calc), _targetsprite(nullptr), _damagetext(&damagetext), _prompttext(&prompttext), _skilltext(nullptr), _decision(nullptr) {}
 
-    const unsigned int GameState_Battle_DamageCalculation::DEFAULT_PROMPT_WAIT_MILLIS = 2500;
+    const unsigned int GameState_Battle_DamageCalculation::DEFAULT_PROMPT_WAIT_MILLIS = 2000;
     const std::string GameState_Battle_DamageCalculation::DEFAULT_PROMPT_MESSAGE = "PRESS ANY\nKEY TO\nPROCEED";
 
     const DamageCalculator* GameState_Battle_DamageCalculation::calc() const { return _calc; }
