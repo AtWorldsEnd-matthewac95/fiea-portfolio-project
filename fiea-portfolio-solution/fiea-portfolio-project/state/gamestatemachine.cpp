@@ -528,7 +528,7 @@ namespace AWE {
             BattlerInstance_shptr target = removed->target();
             auto hp = target->hp();
             auto result = calcState->result()->final();
-            bool defeat = result > hp;
+            bool defeat = result >= hp;
             target->hp(defeat ? 0 : (hp - result));
 
             if (defeat) {
