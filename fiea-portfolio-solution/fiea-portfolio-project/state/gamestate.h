@@ -368,6 +368,7 @@ namespace AWE {
         bool _thomas;
         TextBox* _prompt;
         std::unique_ptr<sf::Clock> _timer;
+        bool _isReadyToSkip;
 
         void Reset();
 
@@ -375,11 +376,15 @@ namespace AWE {
         GameState_Battle_Monologue();
         GameState_Battle_Monologue(TextBox&);
 
+        static const std::string SKIP_STRING;
+
         bool thomas() const;
         const TextBox* prompt() const;
+        bool isReadyToSkip() const;
 
         bool thomas(bool);
         TextBox* prompt(TextBox&);
+        bool isReadyToSkip(bool);
 
         bool Skip();
 

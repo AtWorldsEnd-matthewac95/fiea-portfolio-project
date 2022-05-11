@@ -717,17 +717,22 @@ namespace AWE {
 
     /* Monologue */
 
-    GameState_Battle_Monologue::GameState_Battle_Monologue() : GameState(), _thomas(false), _prompt(nullptr) {}
-    GameState_Battle_Monologue::GameState_Battle_Monologue(TextBox& prompt) : GameState(), _thomas(false), _prompt(&prompt) {}
+    GameState_Battle_Monologue::GameState_Battle_Monologue() : GameState(), _thomas(false), _prompt(nullptr), _isReadyToSkip(false) {}
+    GameState_Battle_Monologue::GameState_Battle_Monologue(TextBox& prompt) : GameState(), _thomas(false), _prompt(&prompt), _isReadyToSkip(false) {}
+
+    const std::string GameState_Battle_Monologue::SKIP_STRING = "press any to skip";
 
     bool GameState_Battle_Monologue::thomas() const { return _thomas; }
     const TextBox* GameState_Battle_Monologue::prompt() const { return _prompt; }
+    bool GameState_Battle_Monologue::isReadyToSkip() const { return _isReadyToSkip; }
 
     bool GameState_Battle_Monologue::thomas(bool newval) { bool oldval = _thomas; _thomas = newval; return oldval; }
     TextBox* GameState_Battle_Monologue::prompt(TextBox& newval) { TextBox* oldval = _prompt; _prompt = &newval; return oldval; }
+    bool GameState_Battle_Monologue::isReadyToSkip(bool newval) { bool oldval = _isReadyToSkip; _isReadyToSkip = newval; return oldval; }
 
     void GameState_Battle_Monologue::Reset() {
         _timer.reset();
+        _isReadyToSkip = false;
 
         if (_prompt) {
             _prompt->isVisible(false);
@@ -743,7 +748,12 @@ namespace AWE {
             return false;
         }
 
-        _step = GameStateStep::ENDING;
+        if (_isReadyToSkip) {
+            _step = GameStateStep::ENDING;
+        } else {
+            _isReadyToSkip = true;
+        }
+
         return true;
     }
 
@@ -765,7 +775,7 @@ namespace AWE {
         _prompt->fixedWidth(_prompt->letterWidth() * 20);
         _prompt->fixedHeight(_prompt->letterHeight() * 7);
         _prompt->alignment(TextAlignment::LEFT);
-        _prompt->SetString("press any to skip\n\nLORD THOMAS:\n\"");
+        _prompt->SetString((_isReadyToSkip ? SKIP_STRING : "") + "\n\nLORD THOMAS:\n\"");
         _prompt->isVisible(true);
         _timer = std::make_unique<sf::Clock>(sf::Clock());
         _step = GameStateStep::PROCESSING;
@@ -786,26 +796,28 @@ namespace AWE {
             return true;
         }
 
+        std::string skipString = (_isReadyToSkip ? SKIP_STRING : "");
+
         if (_timer->getElapsedTime().asMilliseconds() > 0U) {
-            _prompt->SetString("press any to skip\n\nLORD THOMAS:\n\"Long I have fought");
+            _prompt->SetString(skipString + "\n\nLORD THOMAS:\n\"Long I have fought");
         }
         if (_timer->getElapsedTime().asMilliseconds() > 3000U) {
-            _prompt->SetString("press any to skip\n\nLORD THOMAS:\n\"Long I have fought\n to honor Guardiana.");
+            _prompt->SetString(skipString + "\n\nLORD THOMAS:\n\"Long I have fought\n to honor Guardiana.");
         }
         if (_timer->getElapsedTime().asMilliseconds() > 6000U) {
-            _prompt->SetString("press any to skip\n\nLORD THOMAS:\n\"Long I have fought\n to honor Guardiana.\n Now, she is lost");
+            _prompt->SetString(skipString + "\n\nLORD THOMAS:\n\"Long I have fought\n to honor Guardiana.\n Now, she is lost");
         }
         if (_timer->getElapsedTime().asMilliseconds() > 9000U) {
-            _prompt->SetString("press any to skip\n\nLORD THOMAS:\n\"Long I have fought\n to honor Guardiana.\n Now, she is lost\n to corrupted men.");
+            _prompt->SetString(skipString + "\n\nLORD THOMAS:\n\"Long I have fought\n to honor Guardiana.\n Now, she is lost\n to corrupted men.");
         }
         if (_timer->getElapsedTime().asMilliseconds() > 12000U) {
-            _prompt->SetString("press any to skip\n\nLORD THOMAS:\n\"I cannot abide her");
+            _prompt->SetString(skipString + "\n\nLORD THOMAS:\n\"I cannot abide her");
         }
         if (_timer->getElapsedTime().asMilliseconds() > 15000U) {
-            _prompt->SetString("press any to skip\n\nLORD THOMAS:\n\"I cannot abide her\n continued disgrace.");
+            _prompt->SetString(skipString + "\n\nLORD THOMAS:\n\"I cannot abide her\n continued disgrace.");
         }
         if (_timer->getElapsedTime().asMilliseconds() > 18000U) {
-            _prompt->SetString("press any to skip\n\nLORD THOMAS:\n\"I cannot abide her\n continued disgrace.\n Engarde!\"");
+            _prompt->SetString(skipString + "\n\nLORD THOMAS:\n\"I cannot abide her\n continued disgrace.\n Engarde!\"");
         }
     }
 

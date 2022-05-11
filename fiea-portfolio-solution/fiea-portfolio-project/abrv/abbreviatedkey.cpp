@@ -1,6 +1,4 @@
 #include "abbreviatedkey.h"
-#include <utility>
-#include <iterator>
 
 namespace AWE {
     AbbreviatedKey::AbbreviatedKey() : _name(""), _abrv(ABRV::INVALID) {}

@@ -22,7 +22,8 @@
 <Skill name="Sword Stab" txrindex="3" sound="slash.wav">
     <Damage>
         <BaseDamage inclination="PHYS">5</BaseDamage>
-        <StatScaling inclination="PHYS" key="BATK  STRN">0.800000</StatScaling>
+        <StatScaling inclination="PHYS" key="BATK">0.800000</StatScaling>
+        <StatScaling inclination="PHYS" key="STRN">1.000000</StatScaling>
         <StatScaling inclination="PHYS" key="FINS">1.200000</StatScaling>
         <ElementBinding inclination="PHYS" group="true" key="SWDS" damagetype="PIER" penetrating="true">1.000000</ElementBinding>
     </Damage>
@@ -96,7 +97,7 @@
     <Damage>
         <BaseDamage inclination="MAGI">10</BaseDamage>
         <StatScaling inclination="MAGI" key="BATN">1.000000</StatScaling>
-        <StatScaling inclination="MAGI" key="MYST">0.500000</StatScaling>
+        <StatScaling inclination="MAGI" key="MYST">0.700000</StatScaling>
         <ElementBinding inclination="MAGI" group="true" key="WANS" damagetype="ARCN">2.000000</ElementBinding>
     </Damage>
 </Skill>
@@ -186,7 +187,7 @@
 <Equipment name="War Axe" key="WEPN">
     <ElementConversion groupkey="AXES" elekey="BTAX" />
     <Stats>
-        <StatValue key="BATK">5</StatValue>
+        <StatValue key="BATK">8</StatValue>
     </Stats>
 </Equipment>
 
@@ -205,7 +206,7 @@
     <Stats>
         <StatValue key="MXHP">200</StatValue>
         <StatValue key="STRN">20</StatValue>
-        <StatValue key="FINS">10</StatValue>
+        <StatValue key="FINS">12</StatValue>
         <StatValue key="DEFN">20</StatValue>
         <StatValue key="MYST">5</StatValue>
         <StatValue key="WILL">10</StatValue>
@@ -221,7 +222,7 @@
         <StatValue key="FINS">10</StatValue>
         <StatValue key="DEFN">20</StatValue>
         <StatValue key="MYST">20</StatValue>
-        <StatValue key="WILL">10</StatValue>
+        <StatValue key="WILL">12</StatValue>
         <StatValue key="AURA">20</StatValue>
     </Stats>
 </Battler>
@@ -244,10 +245,10 @@
 <Battler name="Lord Thomas" priority="3" txr="0" txrindex="2">
     <StartingEquipment name="Thomas's Sword" />
     <Stats>
-        <StatValue key="MXHP">800</StatValue>
+        <StatValue key="MXHP">950</StatValue>
         <StatValue key="STRN">30</StatValue>
         <StatValue key="FINS">35</StatValue>
-        <StatValue key="DEFN">20</StatValue>
+        <StatValue key="DEFN">25</StatValue>
         <StatValue key="MYST">20</StatValue>
         <StatValue key="WILL">25</StatValue>
         <StatValue key="AURA">15</StatValue>

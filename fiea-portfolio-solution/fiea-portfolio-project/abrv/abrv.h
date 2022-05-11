@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include <utility>
 
 namespace AWE {
     typedef unsigned long ABRV_long;
