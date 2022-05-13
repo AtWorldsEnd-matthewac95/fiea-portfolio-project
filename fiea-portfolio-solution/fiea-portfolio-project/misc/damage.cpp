@@ -176,7 +176,7 @@ namespace AWE {
 
                 long defendingResistTotal = 0;
                 for (const DamageResistances::const_iterator::value_type& defendingResist : defender->resistances()) {
-                    defendingResistTotal += defendingResist.second;
+                    defendingResistTotal += mingate<long>(defendingResist.second, 0);
                 }
 
                 unsigned long attackingStatTotal = 0;
