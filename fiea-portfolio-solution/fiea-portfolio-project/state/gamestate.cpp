@@ -1192,7 +1192,6 @@ namespace AWE {
 
         int hpIncrease = 150;
         ElementalAffinityKey affinkey;
-        ABRV maxhp('M', 'X', 'H', 'P');
         ABRV piercing('P', 'I', 'E', 'R');
         if (_battler->textureType() == static_cast<unsigned int>(GameTextureType::EPPLER)) {
             ABRV strength('S', 'T', 'R', 'N');
@@ -1204,7 +1203,7 @@ namespace AWE {
             switch (_menu->textureIndex()) {
             case 0:
                 if (ExtractElement(swords.AsLong(), pyretic.AsLong(), affinkey)) {
-                    _battler->AdjustStat(maxhp.AsLong(), hpIncrease);
+                    _battler->AdjustStat(BattlerStat::MXHP.AsLong(), hpIncrease);
                     _battler->AdjustStat(finesse.AsLong(), 10);
                     _battler->AdjustAffinity(affinkey, 20);
                 }
@@ -1212,7 +1211,7 @@ namespace AWE {
 
             case 1:
                 if (ExtractElement(swords.AsLong(), slashing.AsLong(), affinkey)) {
-                    _battler->AdjustStat(maxhp.AsLong(), hpIncrease);
+                    _battler->AdjustStat(BattlerStat::MXHP.AsLong(), hpIncrease);
                     _battler->AdjustStat(strength.AsLong(), 5);
                     _battler->AdjustAffinity(affinkey, 10);
                 }
@@ -1220,7 +1219,7 @@ namespace AWE {
 
             case 2:
                 if (ExtractElement(swords.AsLong(), piercing.AsLong(), affinkey)) {
-                    _battler->AdjustStat(maxhp.AsLong(), hpIncrease);
+                    _battler->AdjustStat(BattlerStat::MXHP.AsLong(), hpIncrease);
                     _battler->AdjustStat(strength.AsLong(), 5);
                     _battler->AdjustStat(finesse.AsLong(), 5);
                     _battler->AdjustAffinity(affinkey, 5);
@@ -1238,7 +1237,7 @@ namespace AWE {
             switch (_menu->textureIndex()) {
             case 0:
                 if (ExtractElement(aestival.AsLong(), aetheric.AsLong(), affinkey)) {
-                    _battler->AdjustStat(maxhp.AsLong(), hpIncrease);
+                    _battler->AdjustStat(BattlerStat::MXHP.AsLong(), hpIncrease);
                     _battler->AdjustStat(will.AsLong(), 10);
                     _battler->AdjustAffinity(affinkey, 20);
                 }
@@ -1246,7 +1245,7 @@ namespace AWE {
 
             case 1:
                 if (ExtractElement(wands.AsLong(), arcane.AsLong(), affinkey)) {
-                    _battler->AdjustStat(maxhp.AsLong(), hpIncrease);
+                    _battler->AdjustStat(BattlerStat::MXHP.AsLong(), hpIncrease);
                     _battler->AdjustStat(mysticism.AsLong(), 10);
                     _battler->AdjustAffinity(affinkey, 20);
                 }
@@ -1254,7 +1253,7 @@ namespace AWE {
 
             case 2:
                 if (ExtractElement(aestival.AsLong(), piercing.AsLong(), affinkey)) {
-                    _battler->AdjustStat(maxhp.AsLong(), hpIncrease);
+                    _battler->AdjustStat(BattlerStat::MXHP.AsLong(), hpIncrease);
                     _battler->AdjustStat(will.AsLong(), 7);
                     _battler->AdjustStat(mysticism.AsLong(), 7);
                     _battler->AdjustAffinity(affinkey, 10);
