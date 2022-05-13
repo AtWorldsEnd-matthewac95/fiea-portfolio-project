@@ -124,5 +124,6 @@ namespace AWE {
         }
 
         _isInitialized = true;
+        return _isInitialized;
     }
 }
