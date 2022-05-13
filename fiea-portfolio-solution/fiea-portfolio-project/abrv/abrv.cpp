@@ -49,6 +49,6 @@ namespace AWE {
     ABRV_long FourLetterAbbreviation::AsLong() const { return _long; }
 
     bool FourLetterAbbreviation::Equals(FourLetterAbbreviation other) const {
-        return ((_first == other._first) && (_second == other._second) && (_third == other._third) && (_fourth == other._fourth));
+        return _long == other._long;
     }
 }
