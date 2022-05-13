@@ -3,7 +3,6 @@
 #include "lovpairs.h"
 #include "equipment.h"
 #include "equipmenttype.h"
-//#include "../store/gamexlostorage.h"
 
 namespace AWE {
     // Forward declarations, defined in battler.h
