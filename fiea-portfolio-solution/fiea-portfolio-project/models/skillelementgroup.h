@@ -34,8 +34,8 @@ namespace AWE {
 
         bool IsValid() const;
         bool Initialize();
-        bool Initialize(SkillElementList& elements);
-        bool Initialize(SkillElementGroupList& groups);
+        bool Initialize(SkillElementList elements);
+        bool Initialize(SkillElementGroupList groups);
         bool Equals(const AbbreviatedKey& other) const override;
         bool Equals(const SkillElementGroup& other) const;
 

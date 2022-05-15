@@ -57,7 +57,7 @@ namespace AWE {
         return true;
     }
 
-    bool SkillElementGroup::Initialize(SkillElementList& elements) {
+    bool SkillElementGroup::Initialize(SkillElementList elements) {
         if (IsValid()) {
             return false;
         }
@@ -68,7 +68,7 @@ namespace AWE {
         return true;
     }
 
-    bool SkillElementGroup::Initialize(SkillElementGroupList& groups) {
+    bool SkillElementGroup::Initialize(SkillElementGroupList groups) {
         if (IsValid()) {
             return false;
         }
