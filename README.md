@@ -16,6 +16,14 @@ Third party libraries used:
 
 "AWE" is the name of the namespace into which I put everything I wrote.
 
+Please note I learned much about C++ while writing this project - therefore, files I wrote later into the project may be higher quality than those I wrote earlier.
+The general order I authored the files, from oldest to newest, in are:
+* The files to do with 'LOV' or '.txt' loads. `loaddata.h` and `loaddata.cpp` primarily, along with the respective objects they loaded.
+* The files to do with XML loads. `xmlload.h` and `xmlload.cpp` primarily. along with the respective objects they loaded.
+* Damage calculation.
+* SFML-related code, excepting `gamesfmlstorage.h` and `gamesfmlstorage.cpp`, which were mostly fleshed out in the following section.
+* Game-state-related code, game-scene-related code, along with much of `main.cpp`.
+
 Art & music credits:
 * Romancing SaGa 3 - Minotaur, "Eppler" (Knight character), "Remi" (Magic character)
 * Romancing SaGa 2 - "Lord Thomas" (Swordsman), 3rd song when fighting the swordsman (7 heroes battle)
