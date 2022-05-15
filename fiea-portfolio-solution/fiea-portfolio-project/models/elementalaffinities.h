@@ -23,6 +23,11 @@ namespace AWE {
 
     typedef std::map<ElementalAffinityKey, ElementalAffinityValue, ElementalAffinityKey_comp> ElementalAffinityMap;
 
+    /// <summary>
+    /// Represents a battler's affinities to specific types of elemental damage. Note that "types of elemental damage" here actually means
+    /// element-type pairs, e.g. sword slashing, wand arcane, etc.
+    /// Also note that ElementalAffinityValue is not unsigned - there can be negative affinities.
+    /// </summary>
     class ElementalAffinities {
     private:
         ElementalAffinityMap _map;

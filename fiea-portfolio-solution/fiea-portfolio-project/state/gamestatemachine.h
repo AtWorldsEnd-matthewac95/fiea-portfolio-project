@@ -9,12 +9,17 @@
 namespace AWE {
     typedef std::unordered_map<GameStateType, std::unique_ptr<GameState>> GameStateMap;
     typedef std::vector<GameState*> GameStatePtrList;
-    
+
+    // Forward declarations, defined later in the file.
     class GameState_MachineBattle_BattleLoop;
     class GameState_MachineBattle_PlayerLoop;
     class GameState_MachineBattle_SkillInit;
     class GameState_MachineBattle_SkillLoop;
 
+    /// <summary>
+    /// Manages, organizes, stores, and tracks status of game states. The state machine needs to have the conditions for its various configurations initialized
+    /// before it can assume any of them - some of these initializations happen automatically depending on the constructor used for the state machine.
+    /// </summary>
     class GameStateMachine : public GameState {
     private:
         GameStateMap _map;
@@ -74,6 +79,9 @@ namespace AWE {
 
     /* -- Scene -- */
 
+    /// <summary>
+    /// State-machine-exclusive state. Assists with scene transitions.
+    /// </summary>
     class GameState_MachineScene_Transition : public GameState {
     private:
         GameStateMachine* _parent;
@@ -89,6 +97,9 @@ namespace AWE {
 
     /* -- Battle -- */
 
+    /// <summary>
+    /// State-machine-exclusive state. Assists with ensuring every available character has received the opportunity for input.
+    /// </summary>
     class GameState_MachineBattle_PlayerLoop : public GameState {
     private:
         GameStateMachine* _parent;
@@ -104,6 +115,9 @@ namespace AWE {
         bool Process() override;
     };
 
+    /// <summary>
+    /// State-machine-exclusive state. Assists with initializing all of the game elements to display a skill usage.
+    /// </summary>
     class GameState_MachineBattle_SkillInit : public GameState {
     private:
         GameStateMachine* _parent;
@@ -116,6 +130,9 @@ namespace AWE {
         bool Begin() override;
     };
 
+    /// <summary>
+    /// State-machine-exclusive state. Assists with ensuring all battler decisions are displayed and resolved.
+    /// </summary>
     class GameState_MachineBattle_SkillLoop : public GameState {
     private:
         GameStateMachine* _parent;
@@ -131,6 +148,9 @@ namespace AWE {
         bool Process() override;
     };
 
+    /// <summary>
+    /// State-machine-exclusive state. Assists with determining the state of battle. If the battle is not over, it will reset the whole loop.
+    /// </summary>
     class GameState_MachineBattle_BattleLoop : public GameState {
     private:
         GameStateMachine* _parent;
@@ -152,6 +172,9 @@ namespace AWE {
 
     /* -- Level Up -- */
 
+    /// <summary>
+    /// State-machine-exclusive state. Assists with initializing the "Select" state.
+    /// </summary>
     class GameState_MachineLevelUp_SetSelect : public GameState {
     private:
         GameStateMachine* _parent;
@@ -164,6 +187,9 @@ namespace AWE {
         bool Begin() override;
     };
 
+    /// <summary>
+    /// State-machine-exclusive state. Assists with iterating through the level-up process.
+    /// </summary>
     class GameState_MachineLevelUp_Advance : public GameState {
     private:
         GameStateMachine* _parent;

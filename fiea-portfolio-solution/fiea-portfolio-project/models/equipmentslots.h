@@ -9,7 +9,13 @@ namespace AWE {
     class Battler;
     class BattlerInstance;
 
+    /// <summary>
+    /// There can be multiple equipment of the same type equipped. This distinguishes which equipment of a particular type is being referenced.
+    /// </summary>
     typedef unsigned int EquipmentSlotIndex;
+    /// <summary>
+    /// There can be multiple equipment of the same type equipped. This distinguishes which equipment of a particular type is being referenced.
+    /// </summary>
     typedef std::pair<EquipmentTypeKey, EquipmentSlotIndex> EquipmentSlotKey;
 
     struct EquipmentSlotKey_comp {
@@ -21,8 +27,14 @@ namespace AWE {
         }
     };
 
+    /// <summary>
+    /// Represents equipment slots. Note that an equipment slot can be empty, but the map record for that slot may still be there. Use the EquipmentSlots class to use this map properly.
+    /// </summary>
     typedef std::map<EquipmentSlotKey, Equipment_shptr, EquipmentSlotKey_comp> EquipmentSlotMap;
 
+    /// <summary>
+    /// Wraps a map of equiment and provides several utility functions to properly populate it.
+    /// </summary>
     class EquipmentSlots {
     private:
         EquipmentSlotMap _map;

@@ -10,10 +10,18 @@
 namespace AWE {
     class SkillElementGroup;
 
+    /// <summary>
+    /// Represents a group of skill elements. Can also represent a group of groups - in this case, this group's elements will be a union of all of its child groups.
+    /// Note this object actually has a list which contains all of its elements.
+    /// </summary>
     typedef std::shared_ptr<SkillElementGroup> SkillElementGroup_shptr;
     typedef std::vector<SkillElement_shptr> SkillElementList;
     typedef std::vector<SkillElementGroup_shptr> SkillElementGroupList;
 
+    /// <summary>
+    /// Represents a group of skill elements. Can also represent a group of groups - in this case, this group's elements will be a union of all of its child groups.
+    /// Note this object actually has a list which contains all of its elements.
+    /// </summary>
     class SkillElementGroup : public AbbreviatedKey {
     private:
         bool _isGroups;
@@ -66,6 +74,9 @@ namespace AWE {
         const_iterator end() const;
     };
 
+    /// <summary>
+    /// Used to index SkillElementGroup objects into a map. Currently is designed to be an ABRV_long, which should correspond to this object's ABRV.
+    /// </summary>
     typedef ABRV_long SkillElementGroupKey;
     typedef std::unordered_map<SkillElementGroupKey, SkillElementGroup_shptr> SkillElementGroupMap;
 }

@@ -11,6 +11,9 @@
 #include "skillelementgroup.h"
 
 namespace AWE {
+    /// <summary>
+    /// Represents base damage of one of a skill's damage compontents.
+    /// </summary>
     class SkillBaseDamage {
     private:
         int _value;
@@ -26,6 +29,10 @@ namespace AWE {
         DamageInclination_shptr inclination() const;
     };
 
+    /// <summary>
+    /// Represents how much of the stat-scaled damage should be bound to a certain skill element or skill element group, as well as whether that damage should be penetrating
+    /// and what type of damage should be dealt.
+    /// </summary>
     class SkillElementBinding {
     private:
         bool _isPenetrating;
@@ -49,6 +56,9 @@ namespace AWE {
         bool IsGroupBinding() const;
     };
 
+    /// <summary>
+    /// Represents how much a certain stat should affect the damage output of this skill. The inclination indicates what stats should be used to calculate damage reduction later.
+    /// </summary>
     class SkillStatScaling {
     private:
         float _value;
@@ -63,6 +73,9 @@ namespace AWE {
         BattlerStat_shptr battlerStat() const;
     };
 
+    /// <summary>
+    /// Combines base damage, element bindings, and stat scalings to create one damage component of the skill. Skills can have several of these.
+    /// </summary>
     class SkillDamage {
     private:
         SkillBaseDamage _baseDamage;
@@ -82,6 +95,9 @@ namespace AWE {
         const std::set<SkillElementGroupKey>& elementGroups() const;
     };
 
+    /// <summary>
+    /// Represents a skill which battlers may use in combat against each other.
+    /// </summary>
     class Skill {
     private:
         std::string _name;
@@ -104,7 +120,13 @@ namespace AWE {
         std::string soundFilename(std::string);
     };
 
+    /// <summary>
+    /// Used to index skills into a map. Currently designed to be a string which should be equivalent to the skill's name.
+    /// </summary>
     typedef std::string SkillKey;
+    /// <summary>
+    /// Represents a skill which battlers may use in combat against each other.
+    /// </summary>
     typedef std::shared_ptr<Skill> Skill_shptr;
     typedef std::map<SkillKey, Skill_shptr> SkillMap;
 }

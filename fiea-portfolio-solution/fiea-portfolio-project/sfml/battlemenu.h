@@ -9,6 +9,9 @@
 #include "../models/skill.h"
 
 namespace AWE {
+    /// <summary>
+    /// Wraps a SFML rectangle shape instance. Used to indicate which position on the menu the player is currently selecting.
+    /// </summary>
     class BattleSelector : public AWEDrawable {
     private:
         sf::RectangleShape _rect;
@@ -26,6 +29,9 @@ namespace AWE {
         sf::Color SetRectColor(const sf::Color&);
     };
 
+    /// <summary>
+    /// Made of several custom and SFML components. Comprises the menu seen at the bottom of the screen during a battle.
+    /// </summary>
     class BattleMenu : public AWEDrawable {
     private:
         sf::RectangleShape _background;

@@ -9,6 +9,9 @@
 #include "../sfml/textbox.h"
 
 namespace AWE {
+    /// <summary>
+    /// Enumerates all of the current sounds available to the game engine. These values have no XML equivalent and are simply meant for ease of use to programmers.
+    /// </summary>
     enum class GameSoundType : unsigned short {
         CURSOR,
         FIRE,
@@ -20,6 +23,10 @@ namespace AWE {
         WIND
     };
 
+    /// <summary>
+    /// Enumerates all of the current textures available to the game engine. These values do have XML equivalents! (Which is why these are unsigned ints rather than shorts.)
+    /// Take that into consideration when new values are added.
+    /// </summary>
     enum class GameTextureType : unsigned int {
         ENEMY,
         EPPLER,
@@ -32,12 +39,18 @@ namespace AWE {
         WOODS
     };
 
+    /// <summary>
+    /// Enumerates all of the current text box types designed. These are not binding to anything and are mostly used for ease-of-use and organizational purposes.
+    /// </summary>
     enum class GameTextboxType : unsigned short {
         DAMAGE,
         GENERIC,
         SKILL
     };
 
+    /// <summary>
+    /// Stores objects loaded using SFML as well as AWE analogues to SFML objects. Also provides several utility functions to properly interact with these objects.
+    /// </summary>
     class GameSFMLStorage {
     private:
         static const std::string DEFAULT_RESOURCES_LOCATION;

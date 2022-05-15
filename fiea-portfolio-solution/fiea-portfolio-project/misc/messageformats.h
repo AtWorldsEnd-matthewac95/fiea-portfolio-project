@@ -2,6 +2,9 @@
 #include <string>
 
 namespace AWE {
+    /// <summary>
+    /// Flexible class which stores a success message and a failure message. Makes logging convenient. Used primarily in the LOV load.
+    /// </summary>
     class MessageFormats {
     private:
         std::string _success;

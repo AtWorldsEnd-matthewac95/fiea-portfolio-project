@@ -8,6 +8,9 @@
 #include "../models/skill.h"
 
 namespace AWE {
+    /// <summary>
+    /// XLO = XML Loaded Objects. Stores all the objects loaded using tinyxml2.
+    /// </summary>
     class GameXLOStorage {
     private:
         EquipmentTypeCountMap _defaultEquipmentSlotSchema;

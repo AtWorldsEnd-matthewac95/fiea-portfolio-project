@@ -12,6 +12,9 @@
 namespace AWE {
     static const std::string EQUIPMENT_EMPTYNAME = std::string("Empty");
 
+    /// <summary>
+    /// Represents information about equipment.
+    /// </summary>
     class Equipment {
     private:
         std::string _name;
@@ -50,7 +53,13 @@ namespace AWE {
         SkillElement_shptr GetConversion(SkillElementGroupKey) const;
     };
 
+    /// <summary>
+    /// Used to index Equipment into a map. Currently designed to be a string which should be equivalent to the equipment's name.
+    /// </summary>
     typedef std::string EquipmentKey;
+    /// <summary>
+    /// Represents information about equipment.
+    /// </summary>
     typedef std::shared_ptr<Equipment> Equipment_shptr;
     typedef std::map<EquipmentKey, Equipment_shptr> EquipmentMap;
     typedef std::vector<Equipment_shptr> EquipmentList;

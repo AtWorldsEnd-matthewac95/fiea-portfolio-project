@@ -12,6 +12,9 @@
 #include "../store/gamesfmlstorage.h"
 
 namespace AWE {
+    /// <summary>
+    /// Enumerates all the possible steps a game state can be in.
+    /// </summary>
     enum class GameStateStep : unsigned short {
         DONE,
         BEGINNING,
@@ -19,6 +22,10 @@ namespace AWE {
         ENDING
     };
 
+    /// <summary>
+    /// Enumerates all the possible types of game states. Each of these types should have a corresponding class implementing the behavior.
+    /// Not all states are defined in the same file.
+    /// </summary>
     enum class GameStateType : unsigned short {
         STOP,
         CLOSE,
@@ -45,6 +52,11 @@ namespace AWE {
         MACHINE
     };
 
+    /// <summary>
+    /// Superclass for all game states. Implements very basic functionality for all steps, meant to be overriden. The basic procedure is to call Update, which is
+    /// in turn hard-coded to call the correct step function, and then afterwards check if the state's step is equal to DONE (or to call the isDone function). If
+    /// the state is done, then it's time to transition to the next state.
+    /// </summary>
     class GameState {
     protected:
         GameStateStep _step;
@@ -87,6 +99,9 @@ namespace AWE {
 
     /* Close */
 
+    /// <summary>
+    /// State meant to represent that the screen should be closed, concluding the game. No actual behavior is defined in this state.
+    /// </summary>
     class GameState_Close : public GameState {
     public:
         GameStateType stateType() const override { return GameStateType::CLOSE; }
@@ -98,6 +113,9 @@ namespace AWE {
 
     /* Fade In */
 
+    /// <summary>
+    /// State used to make the game fade into view, normally from a black screen.
+    /// </summary>
     class GameState_Scene_FadeIn : public GameState {
     private:
         sf::RectangleShape* _fadebox;
@@ -128,6 +146,9 @@ namespace AWE {
 
     /* Fade Out */
 
+    /// <summary>
+    /// State used to make the game fade into view, normally to a black screen.
+    /// </summary>
     class GameState_Scene_FadeOut : public GameState {
     private:
         sf::RectangleShape* _fadebox;
@@ -158,6 +179,9 @@ namespace AWE {
 
     /* Music */
 
+    /// <summary>
+    /// State responsible for starting the music in the scene. Reseting this state will stop the music.
+    /// </summary>
     class GameState_Scene_Music : public GameState {
     private:
         GameSFMLStorage* _sfmls;
@@ -187,6 +211,9 @@ namespace AWE {
 
     /* AI Skill Select */
 
+    /// <summary>
+    /// State responsible for selecting the AI's skill and target.
+    /// </summary>
     class GameState_Battle_AISkillSelect : public GameState {
     private:
         GameBattleInfo* _battle;
@@ -210,6 +237,9 @@ namespace AWE {
 
     /* Skill Name */
 
+    /// <summary>
+    /// State responsible for displaying the current skill's name to the player.
+    /// </summary>
     class GameState_Battle_SkillName : public GameState {
     private:
         TextBox* _textbox;
@@ -239,6 +269,9 @@ namespace AWE {
 
     /* Damage Calculation */
 
+    /// <summary>
+    /// State responsible for calculating damage as a part of battler decision resolution.
+    /// </summary>
     class GameState_Battle_DamageCalculation : public GameState {
     private:
         const DamageCalculator* _calc;
@@ -289,6 +322,9 @@ namespace AWE {
 
     /* Skill Animation */
 
+    /// <summary>
+    /// State responsible for displaying the "animation" of the skill. For simplicity's sake, this is simply a still image coupled with a sound.
+    /// </summary>
     class GameState_Battle_SkillAnimation : public GameState {
     private:
         sf::Sound* _sound;
@@ -324,6 +360,9 @@ namespace AWE {
 
     /* Player Skill Select */
 
+    /// <summary>
+    /// State responsible for stewarding the game through the player skill selection process.
+    /// </summary>
     class GameState_Battle_PlayerSkillSelect : public GameState {
     private:
         BattleMenu* _menu;
@@ -357,6 +396,9 @@ namespace AWE {
 
     /* Monologue */
 
+    /// <summary>
+    /// State responsible for displaying a character's monologue. Currently there's only one monologue in the game, and that's of Lord Thomas, the 2nd enemy.
+    /// </summary>
     class GameState_Battle_Monologue : public GameState {
     private:
         bool _thomas;
@@ -393,6 +435,9 @@ namespace AWE {
 
     /* Player Won */
 
+    /// <summary>
+    /// Game responsible for controlling what happens immediately after the player wins the battle.
+    /// </summary>
     class GameState_Battle_PlayerWon : public GameState {
     private:
         AWESprite* _enemySprite;
@@ -429,6 +474,9 @@ namespace AWE {
 
     /* Player Lost */
 
+    /// <summary>
+    /// State responsible for controlling what happens immediately after the player losses the battle.
+    /// </summary>
     class GameState_Battle_PlayerLost : public GameState {
     private:
         bool _isAcknowledged;
@@ -463,6 +511,9 @@ namespace AWE {
     // Forward declaration, defined in gamestatemachine.h
     class GameState_MachineLevelUp_SetSelect;
 
+    /// <summary>
+    /// State responsible for finding the characters who are to be levelled up.
+    /// </summary>
     class GameState_LevelUp_LoadCharacters : public GameState {
     private:
         GameXLOStorage* _xlo;
@@ -489,6 +540,9 @@ namespace AWE {
 
     /* Select */
 
+    /// <summary>
+    /// State responsible for stewarding the game through the player level up selection process.
+    /// </summary>
     class GameState_LevelUp_Select : public GameState {
     private:
         AWESprite* _menu;

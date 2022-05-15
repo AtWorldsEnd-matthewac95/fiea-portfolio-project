@@ -7,6 +7,9 @@
 #include "../models/skillelementgroup.h"
 
 namespace AWE {
+    /// <summary>
+    /// LOV = List Of Values. This object stores all "list entry" objects loaded from the `.txt` files in the `res` folder. These objects all happen to be subclasses of AbbreviatedKey.
+    /// </summary>
     class GameLOVStorage {
     private:
         static const std::string DEFAULT_LOAD_RES_LOC;

@@ -4,12 +4,18 @@
 #include "awedrawable.h"
 
 namespace AWE {
+    /// <summary>
+    /// Enumerates text alignments. Think Microsoft Word.
+    /// </summary>
     enum class TextAlignment : unsigned short {
         LEFT,
         CENTER,
         RIGHT
     };
 
+    /// <summary>
+    /// Helper struct to consolidate some of the potential visual attributes of a text box.
+    /// </summary>
     struct TextBoxVisuals {
         const sf::Font* font;
         unsigned short margin;
@@ -22,6 +28,9 @@ namespace AWE {
             : font(&font), margin(margin), textColor(std::move(textColor)), boxColor(std::move(boxColor)), letterWidth(letterWidth), letterHeight(letterHeight) {}
     };
 
+    /// <summary>
+    /// Wraps a SFML RectangleShape element and a SFML Text element. Provides utility functionality to aid in orienting the text and sizing the box.
+    /// </summary>
     class TextBox : public AWEDrawable {
     private:
         sf::Text _text;

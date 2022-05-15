@@ -6,6 +6,9 @@
 #include "../store/gamexlostorage.h"
 
 namespace AWE {
+    /// <summary>
+    /// Represents battle information about the game. For this early version of the project, each battle only has one enemy for simplicity's sake.
+    /// </summary>
     class GameBattleInfo {
     private:
         DamageCalculator _damagecalc;

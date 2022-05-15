@@ -9,9 +9,16 @@
 #include "../models/skill.h"
 
 namespace AWE {
+    /// <summary>
+    /// This namespace primarily exists to isolate usage of the tinyxml2 library and to reduce confusion with GameXLOStorage. GameXLOStorage should be the main source of truth
+    /// in regards to all XML-loaded objects.
+    /// </summary>
     namespace XML_LOAD_PRIVATE {
         using namespace tinyxml2;
 
+        /// <summary>
+        /// Subclass of XMLVisitor made to read the XML file in the `res` folder.
+        /// </summary>
         class LoadDataVisitor : public XMLVisitor {
         private:
             static const std::string XML_ATTRLIST_DELIM;

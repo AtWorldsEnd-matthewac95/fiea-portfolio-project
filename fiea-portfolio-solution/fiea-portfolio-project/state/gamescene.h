@@ -4,6 +4,9 @@
 #include "../store/gamesfmlstorage.h"
 
 namespace AWE {
+    /// <summary>
+    /// Information about music. Meant to be used in conjunction with sf::Music from SFML.
+    /// </summary>
     struct AWEMusicInfo {
     private:
         std::string _filename;
@@ -23,6 +26,9 @@ namespace AWE {
         unsigned int startoffset() const { return _startoffset; }
     };
 
+    /// <summary>
+    /// Represents information about a "scene". Scenes can also be thought of as "levels", "stages", or "screens".
+    /// </summary>
     class GameSceneInfo {
     private:
         GameTextureType _background;
@@ -45,6 +51,9 @@ namespace AWE {
 
     typedef std::vector<GameSceneInfo> GameScenes;
 
+    /// <summary>
+    /// Object which handles proper transition between scenes.
+    /// </summary>
     class GameSceneTransitioner {
     private:
         GameSFMLStorage* _sfmls;

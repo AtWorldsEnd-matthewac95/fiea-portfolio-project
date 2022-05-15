@@ -12,6 +12,10 @@ namespace AWE {
     typedef int DamageResistanceValue;
     typedef std::map<DamageTypeInclination, DamageResistanceValue, DamageTypeInclination_comp> DamageResistanceMap;
 
+    /// <summary>
+    /// Represents a battler's resistances to specific types of damage. Note that "types of damage" here actually means inclination-type pairs, e.g. physical slashing, magical arcane, etc.
+    /// Also note that DamageResistanceValue is not unsigned - there can be negative resistances.
+    /// </summary>
     class DamageResistances {
     private:
         DamageResistanceMap _map;

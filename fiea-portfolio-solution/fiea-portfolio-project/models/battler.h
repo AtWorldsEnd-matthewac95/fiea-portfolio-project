@@ -10,6 +10,9 @@
 //#include "../store/gamexlostorage.h"
 
 namespace AWE {
+    /// <summary>
+    /// Represents "global" information about a battler. For the objects used in actual battles, see AWE::BattlerInstance.
+    /// </summary>
     class Battler {
     private:
         std::string _name;
@@ -68,6 +71,9 @@ namespace AWE {
         friend class BattlerInstance;
     };
 
+    /// <summary>
+    /// Represents "instanced" information about a battler. A battler instance is created from an AWE::Battler at the start of combat, and is used to manage that battler's status during the battle.
+    /// </summary>
     class BattlerInstance {
     private:
         Battler* _parent;
@@ -98,8 +104,17 @@ namespace AWE {
         DamageSourceValue GetDamageSource(DamageTypeInclination) const;
     };
 
+    /// <summary>
+    /// Represents "global" information about a battler. For the objects used in actual battles, see AWE::BattlerInstance.
+    /// </summary>
     typedef std::shared_ptr<Battler> Battler_shptr;
+    /// <summary>
+    /// Represents "instanced" information about a battler. A battler instance is created from an AWE::Battler at the start of combat, and is used to manage that battler's status during the battle.
+    /// </summary>
     typedef std::shared_ptr<BattlerInstance> BattlerInstance_shptr;
+    /// <summary>
+    /// Used to index battlers into a map. Currently designed to be a string which should be equivalent to the battler's name.
+    /// </summary>
     typedef std::string BattlerKey;
     typedef std::map<BattlerKey, Battler_shptr> BattlerMap;
 }
