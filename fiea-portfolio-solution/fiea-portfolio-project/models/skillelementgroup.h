@@ -23,8 +23,8 @@ namespace AWE {
     public:
         SkillElementGroup();
         SkillElementGroup(std::string name, ABRV abrv);
-        SkillElementGroup(std::string name, ABRV abrv, SkillElementList& elements);
-        SkillElementGroup(std::string name, ABRV abrv, SkillElementGroupList& groups);
+        SkillElementGroup(std::string name, ABRV abrv, SkillElementList elements);
+        SkillElementGroup(std::string name, ABRV abrv, SkillElementGroupList groups);
 
         static const SkillElementGroup INVALID;
 

@@ -5,10 +5,10 @@ namespace AWE {
 
     SkillElementGroup::SkillElementGroup(std::string name, ABRV abrv) : AbbreviatedKey(name, abrv), _isGroups(false) {}
 
-    SkillElementGroup::SkillElementGroup(std::string name, ABRV abrv, SkillElementList& elements)
+    SkillElementGroup::SkillElementGroup(std::string name, ABRV abrv, SkillElementList elements)
         : AbbreviatedKey(name, abrv), _isGroups(false), _elements(std::move(elements)) {}
 
-    SkillElementGroup::SkillElementGroup(std::string name, ABRV abrv, SkillElementGroupList& groups)
+    SkillElementGroup::SkillElementGroup(std::string name, ABRV abrv, SkillElementGroupList groups)
             : AbbreviatedKey(name, abrv), _isGroups(true), _groups(std::move(std::make_unique<SkillElementGroupList>(groups))) {
         SkillElementList elements;
         bool keepElements = true;
