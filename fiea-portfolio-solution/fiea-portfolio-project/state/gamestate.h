@@ -19,12 +19,6 @@ namespace AWE {
         ENDING
     };
 
-    enum class GameStateTransition : unsigned short {
-        FORWARD,
-        BACKWARD,
-        LOOP
-    };
-
     enum class GameStateType : unsigned short {
         STOP,
         CLOSE,
