@@ -71,6 +71,7 @@ namespace AWE {
     bool GameStateMachine::isSceneInitialized() const { return _isSceneInitialized; }
     bool GameStateMachine::isBattleInitialized() const { return _isBattleInitialized; }
     bool GameStateMachine::isBattleConfigured() const { return _isBattleConfigured; }
+    bool GameStateMachine::isBattleLostConfigured() const { return _isBattleLostConfigured; }
     bool GameStateMachine::isLevelupInitialized() const { return _isLevelupInitialized; }
     bool GameStateMachine::isLevelupConfigured() const { return _isLevelupConfigured; }
     GameState* GameStateMachine::current() { return _states.empty() || _index >= _states.size() ? nullptr : _states.at(_index); }
