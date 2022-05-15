@@ -13,9 +13,9 @@ namespace AWE {
         MessageFormats();
         MessageFormats(std::string success, std::string failure, std::string other = "");
 
-        std::string success() const;
-        std::string failure() const;
-        std::string other() const;
+        std::string success();
+        std::string failure();
+        std::string other();
         bool isSuccess() const;
 
         std::string success(std::string);
