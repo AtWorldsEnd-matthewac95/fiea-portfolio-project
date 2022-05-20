@@ -75,8 +75,13 @@ namespace AWE {
         }
 
         EquipmentSlotKey key = EquipmentSlotKey(equipment->equipmentType()->abrvlong(), index);
-        Equipment_shptr unequipped = std::move(_map.at(key));
-        _map.find(key)->second = std::move(equipment);
+        auto found = _map.find(key);
+        if (found == _map.end()) {
+            return Equipment_shptr();
+        }
+
+        Equipment_shptr unequipped = std::move(found->second);
+        found->second = std::move(equipment);
         return unequipped;
     }
 
