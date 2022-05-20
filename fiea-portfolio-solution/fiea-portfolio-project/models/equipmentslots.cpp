@@ -113,11 +113,34 @@ namespace AWE {
         return unequipped;
     }
 
-    Equipment_shptr EquipmentSlots::Unequip(EquipmentTypeKey eqtype) { return Unequip(EquipmentSlotKey(eqtype, _counts.at(eqtype))); }
+    Equipment_shptr EquipmentSlots::Unequip(EquipmentTypeKey eqtype) {
+        auto countfound = _counts.find(eqtype);
+        if (countfound == _counts.end()) {
+            return Equipment_shptr();
+        }
+
+        Equipment_shptr unequipped;
+
+        for (EquipmentSlotIndex i = countfound->second; i >= 0; i--) {
+            auto key = EquipmentSlotKey(eqtype, i);
+            auto slotfound = _map.find(key);
+            if (slotfound != _map.end() && slotfound->second) {
+                return Unequip(key);
+            }
+        }
+
+        return unequipped;
+    }
+
     Equipment_shptr EquipmentSlots::Unequip(EquipmentTypeKey eqtype, EquipmentSlotIndex index) { return Unequip(EquipmentSlotKey(eqtype, index)); }
     Equipment_shptr EquipmentSlots::Unequip(EquipmentSlotKey key) {
-        Equipment_shptr unequipped = std::move(_map.at(key));
-        _map.find(key)->second.reset();
+        auto found = _map.find(key);
+        if (found == _map.end()) {
+            return Equipment_shptr();
+        }
+
+        Equipment_shptr unequipped = std::move(found->second);
+        found->second.reset();
         return unequipped;
     }
 
