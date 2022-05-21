@@ -32,7 +32,15 @@ namespace AWE {
     private:
         ElementalAffinityMap _map;
 
+        /// <summary>
+        /// Sets the value of the given affinity. The given affinity will be created if it did not exist.
+        /// </summary>
+        /// <returns>New value of the given affinity. Note this does not return the old value.</returns>
         ElementalAffinityValue SetValue(ElementalAffinityKey, ElementalAffinityValue);
+        /// <summary>
+        /// Adds the given value to the current value of the given affinity. Value can be negative. The given affinity will be created if it did not exist.
+        /// </summary>
+        /// <returns>New value of the given affinity after the addition.</returns>
         ElementalAffinityValue AddValue(ElementalAffinityKey, ElementalAffinityValue);
 
         friend class Battler;
@@ -40,15 +48,30 @@ namespace AWE {
 
     public:
         ElementalAffinities();
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="">Map to use for affinities. Note this parameter is moved into the initialized object.</param>
         ElementalAffinities(ElementalAffinityMap&);
+        /// <summary>
+        /// Constructor. Initializes affinities for all elements and damage types given, and sets them to 0.
+        /// </summary>
         ElementalAffinities(const SkillElementMap&, const DamageTypeMap&);
+        /// <summary>
+        /// Constructor. Initializes affinities for all elements and damage types given, and copies their values from the given map. None of the given maps are modified.
+        /// </summary>
         ElementalAffinities(const SkillElementMap&, const DamageTypeMap&, const ElementalAffinityMap&);
 
+        /// <returns>const reference to the internal map.</returns>
         const ElementalAffinityMap& map() const;
 
+        /// <returns>Value of the affinity for the given skill element and damage type.</returns>
         ElementalAffinityValue GetValue(SkillElementKey, DamageTypeKey) const;
+        /// <returns>Total sum value of all affinities for the given damage type and each skill element in the given group.</returns>
         ElementalAffinityValue GetValue(const SkillElementGroup_shptr&, DamageTypeKey) const;
+        /// <returns>Total sum value of all affinities for the given skill element.</returns>
         ElementalAffinityValue GetValue(SkillElementKey) const;
+        /// <returns>Total sum value of all affinities for each skill element in the given group.</returns>
         ElementalAffinityValue GetValue(const SkillElementGroup_shptr&) const;
 
         class const_iterator {
@@ -74,7 +97,9 @@ namespace AWE {
             ElementalAffinityMap::const_iterator _itr;
         };
 
+        /// <returns>const iterator to the first affinity value pair in this object.</returns>
         const_iterator begin() const;
+        /// <returns>const iterator to the spot in memory behind the last affinity value pair in this object. Attempting access from this address will result in undefined behavior.</returns>
         const_iterator end() const;
     };
 }

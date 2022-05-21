@@ -33,11 +33,60 @@ namespace AWE {
     static std::string const LOAD_SKILLELEMENT_NAME = "skillelement.txt";           // Default name of the file which contains skill elements.
     static std::string const LOAD_SKILLELEMENTGROUP_NAME = "skillelementgroup.txt"; // Default name of the file which contains skill element groups.
 
+    /// <summary>
+    /// Reads a battler stat list from a file and populates the given map with that information.
+    /// </summary>
+    /// <param name="output">Output parameter. Values from the list will be put into this map.</param>
+    /// <param name="location">Directory where the file should be located.</param>
+    /// <param name="delim">Delimiter in the file between the ABRV key of the battler stat and its name. Default is two spaces.</param>
+    /// <param name="filename">Name of the file to read the list from.</param>
+    /// <returns>LOAD_OK if the load was successful, otherwise an error code relating to the problem.</returns>
     LoadDataError LoadBattlerStats(BattlerStatMap &output, std::string location = LOAD_RES_LOC, std::string delim = LOAD_DEFAULT_DELIM, std::string filename = LOAD_BATTLERSTAT_NAME);
+    /// <summary>
+    /// Reads a damage inclination list from a file and populates the given map with that information.
+    /// </summary>
+    /// <param name="output">Output parameter. Values from the list will be put into this map.</param>
+    /// <param name="location">Directory where the file should be located.</param>
+    /// <param name="delim">Delimiter in the file between the ABRV key of the damage inclination and its name. Default is two spaces.</param>
+    /// <param name="filename">Name of the file to read the list from.</param>
+    /// <returns>LOAD_OK if the load was successful, otherwise an error code relating to the problem.</returns>
     LoadDataError LoadDamageInclinations(DamageInclinationMap &output, std::string location = LOAD_RES_LOC, std::string delim = LOAD_DEFAULT_DELIM, std::string filename = LOAD_DAMAGEINCLINATION_NAME);
+    /// <summary>
+    /// Reads a damage type list from a file and populates the given map with that information.
+    /// </summary>
+    /// <param name="output">Output parameter. Values from the list will be put into this map.</param>
+    /// <param name="location">Directory where the file should be located.</param>
+    /// <param name="delim">Delimiter in the file between the ABRV key of the damage type and its name. Default is two spaces.</param>
+    /// <param name="filename">Name of the file to read the list from.</param>
+    /// <returns>LOAD_OK if the load was successful, otherwise an error code relating to the problem.</returns>
     LoadDataError LoadDamageTypes(DamageTypeMap &output, std::string location = LOAD_RES_LOC, std::string delim = LOAD_DEFAULT_DELIM, std::string filename = LOAD_DAMAGETYPE_NAME);
+    /// <summary>
+    /// Reads an equipment type list from a file and populates the given map with that information.
+    /// </summary>
+    /// <param name="output">Output parameter. Values from the list will be put into this map.</param>
+    /// <param name="location">Directory where the file should be located.</param>
+    /// <param name="delim">Delimiter in the file between the ABRV key of the equipment type and its name. Default is two spaces.</param>
+    /// <param name="filename">Name of the file to read the list from.</param>
+    /// <returns>LOAD_OK if the load was successful, otherwise an error code relating to the problem.</returns>
     LoadDataError LoadEquipmentTypes(EquipmentTypeMap& output, std::string location = LOAD_RES_LOC, std::string delim = LOAD_DEFAULT_DELIM, std::string filename = LOAD_EQUIPMENTTYPE_NAME);
+    /// <summary>
+    /// Reads a skill element list from a file and populates the given map with that information.
+    /// </summary>
+    /// <param name="output">Output parameter. Values from the list will be put into this map.</param>
+    /// <param name="location">Directory where the file should be located.</param>
+    /// <param name="delim">Delimiter in the file between the ABRV key of the skill element and its name. Default is two spaces.</param>
+    /// <param name="filename">Name of the file to read the list from.</param>
+    /// <returns>LOAD_OK if the load was successful, otherwise an error code relating to the problem.</returns>
     LoadDataError LoadSkillElements(SkillElementMap &output, std::string location = LOAD_RES_LOC, std::string delim = LOAD_DEFAULT_DELIM, std::string filename = LOAD_SKILLELEMENT_NAME);
+    /// <summary>
+    /// Reads a skill element group list from a file and populates the given map with that information.
+    /// </summary>
+    /// <param name="output">Output parameter. Values from the list will be put into this map.</param>
+    /// <param name="elementMap">Used as reference to populate the groups. Skill elements should be loaded before skill element groups.</param>
+    /// <param name="location">Directory where the file should be located.</param>
+    /// <param name="delim">Delimiter in the file between the ABRV key of the skill element group and its name. The same delimiter should also be used between elements of the groups.</param>
+    /// <param name="filename">Name of the file to read the list from.</param>
+    /// <returns>LOAD_OK if the load was successful, otherwise an error code relating to the problem.</returns>
     LoadDataError LoadElementGroups(
         SkillElementGroupMap &output,
         SkillElementMap* elementMap,

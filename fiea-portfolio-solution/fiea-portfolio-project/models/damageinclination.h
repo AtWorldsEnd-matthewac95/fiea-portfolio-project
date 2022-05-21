@@ -13,13 +13,27 @@ namespace AWE {
     /// </summary>
     class DamageInclination : public AbbreviatedKey {
     public:
+        /// <summary>
+        /// Default constructor. Initializes the object with an empty name and an invalid ABRV.
+        /// </summary>
         DamageInclination();
         DamageInclination(std::string name, ABRV abrv);
 
+        /// <summary>
+        /// Any DamageInclination which is equivalent to this object is invalid.
+        /// </summary>
         static const DamageInclination INVALID;
+        /// <summary>
+        /// ABRV which represents the "AUTO" damage inclination. This is not an actual valid damage inclination, but when this value is found in certain places where an inclination is
+        /// expected, the algorithm would be designed to know to determine the correct inclination from the surrounding context.
+        /// </summary>
         static const ABRV AUTO_KEY;
 
+        /// <param name="other">The other AbbreviatedKey object.</param>
+        /// <returns>Equivalence to the other AbbreviatedKey.</returns>
         bool Equals(const AbbreviatedKey& other) const override;
+        /// <param name="other">The other DamageInclination object.</param>
+        /// <returns>Equivalence to the other DamageInclination.</returns>
         bool Equals(const DamageInclination& other) const;
     };
 

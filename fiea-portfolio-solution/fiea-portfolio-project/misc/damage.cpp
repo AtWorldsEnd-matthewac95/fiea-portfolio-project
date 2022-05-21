@@ -137,12 +137,12 @@ namespace AWE {
 
     /* DamageCalculator */
 
-    const unsigned int DamageCalculator::ELEM_THRESHOLD_CONSTANT = 20U; // This number * 2.5 should be roughly what a "late-game" affinity value should look like.
-    const float DamageCalculator::ELEMTHRESH_MULTIP_CONSTANT = 10U;     // Helps determine minumum multiplier for nonpenetrating damage. The higher this number is, each point of affinity will be less effective at raising the minimum.
-    const float DamageCalculator::NONPEN_BONUS_MAX = 2.0f;              // Maximum multiplier for bonuses from nonpenetrating damage.
-    const float DamageCalculator::PENETRATION_EFFECTIVENESS = 1.0f;     // Needs to be between or equal to 0.0f and/or 1.0f
-    const float DamageCalculator::REDUCTION_CONSTANT = 2000.0f;         // Should be roughly double the highest expected value for a battler stat.
-    const float DamageCalculator::RESIDUAL_CONSTANT = 0.1f;             // Attacking stats must be (1 + this number) times greater than their defensive counterparts to achieve parity.
+    const unsigned int DamageCalculator::ELEM_THRESHOLD_CONSTANT = 20U;
+    const float DamageCalculator::ELEMTHRESH_MULTIP_CONSTANT = 10U;
+    const float DamageCalculator::NONPEN_BONUS_MAX = 2.0f;
+    const float DamageCalculator::PENETRATION_EFFECTIVENESS = 1.0f;
+    const float DamageCalculator::REDUCTION_CONSTANT = 2000.0f;
+    const float DamageCalculator::RESIDUAL_CONSTANT = 0.1f;
 
     DamageCalculator::DamageCalculator(const GameLOVStorage& lov, const GameXLOStorage& xlo) : _lov(&lov), _xlo(&xlo) {}
 

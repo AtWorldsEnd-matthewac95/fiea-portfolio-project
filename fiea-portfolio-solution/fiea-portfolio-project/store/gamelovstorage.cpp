@@ -7,7 +7,7 @@ namespace AWE {
 
     bool GameLOVStorage::isInitialized() const { return _isInitialized; }
 
-    const BattlerStat_shptr GameLOVStorage::GetBattlerStat(BattlerStatKey key) const {
+    BattlerStat_shptr GameLOVStorage::GetBattlerStat(BattlerStatKey key) const {
         BattlerStat_shptr bstat;
 
         if (_isInitialized) {
@@ -20,7 +20,7 @@ namespace AWE {
         return bstat;
     }
 
-    const DamageInclination_shptr GameLOVStorage::GetDamageInclination(DamageInclinationKey key) const {
+    DamageInclination_shptr GameLOVStorage::GetDamageInclination(DamageInclinationKey key) const {
         DamageInclination_shptr incl;
 
         if (_isInitialized) {
@@ -33,7 +33,7 @@ namespace AWE {
         return incl;
     }
 
-    const DamageType_shptr GameLOVStorage::GetDamageType(DamageTypeKey key) const {
+    DamageType_shptr GameLOVStorage::GetDamageType(DamageTypeKey key) const {
         DamageType_shptr dtype;
 
         if (_isInitialized) {
@@ -46,7 +46,7 @@ namespace AWE {
         return dtype;
     }
 
-    const EquipmentType_shptr GameLOVStorage::GetEquipmentType(EquipmentTypeKey key) const {
+    EquipmentType_shptr GameLOVStorage::GetEquipmentType(EquipmentTypeKey key) const {
         EquipmentType_shptr eqtype;
 
         if (_isInitialized) {
@@ -59,7 +59,7 @@ namespace AWE {
         return eqtype;
     }
 
-    const SkillElement_shptr GameLOVStorage::GetSkillElement(SkillElementKey key) const {
+    SkillElement_shptr GameLOVStorage::GetSkillElement(SkillElementKey key) const {
         SkillElement_shptr ele;
 
         if (_isInitialized) {
@@ -72,7 +72,7 @@ namespace AWE {
         return ele;
     }
 
-    const SkillElementGroup_shptr GameLOVStorage::GetSkillElementGroup(SkillElementGroupKey key) const {
+    SkillElementGroup_shptr GameLOVStorage::GetSkillElementGroup(SkillElementGroupKey key) const {
         SkillElementGroup_shptr elegroup;
 
         if (_isInitialized) {

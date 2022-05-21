@@ -12,12 +12,22 @@ namespace AWE {
     /// </summary>
     class DamageType : public AbbreviatedKey {
     public:
+        /// <summary>
+        /// Default constructor. Initializes the object with an empty name and an invalid ABRV.
+        /// </summary>
         DamageType();
         DamageType(std::string name, ABRV abrv);
 
+        /// <summary>
+        /// Any DamageType which is equivalent to this object is invalid.
+        /// </summary>
         static const DamageType INVALID;
 
+        /// <param name="other">The other AbbreviatedKey object.</param>
+        /// <returns>Equivalence to the other AbbreviatedKey.</returns>
         bool Equals(const AbbreviatedKey& other) const override;
+        /// <param name="other">The other DamageType object.</param>
+        /// <returns>Equivalence to the other DamageType.</returns>
         bool Equals(const DamageType& other) const;
     };
 

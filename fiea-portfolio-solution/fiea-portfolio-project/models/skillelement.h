@@ -11,12 +11,22 @@ namespace AWE {
     /// </summary>
     class SkillElement : public AbbreviatedKey {
     public:
+        /// <summary>
+        /// Default constructor. Initializes the object with an empty name and an invalid ABRV.
+        /// </summary>
         SkillElement();
         SkillElement(std::string name, ABRV abrv);
 
+        /// <summary>
+        /// Any SkillElement which is equivalent to this object is invalid.
+        /// </summary>
         static const SkillElement INVALID;
 
+        /// <param name="other">The other AbbreviatedKey object.</param>
+        /// <returns>Equivalence to the other AbbreviatedKey.</returns>
         bool Equals(const AbbreviatedKey& other) const override;
+        /// <param name="other">The other SkillElement object.</param>
+        /// <returns>Equivalence to the other SkillElement.</returns>
         bool Equals(const SkillElement& other) const;
     };
 

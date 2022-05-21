@@ -20,7 +20,15 @@ namespace AWE {
     private:
         DamageResistanceMap _map;
 
+        /// <summary>
+        /// Sets the value of the given resistance. The given resistance will be created if it did not exist.
+        /// </summary>
+        /// <returns>New value of the given resistance. Note this does not return the old value.</returns>
         DamageResistanceValue SetValue(DamageTypeInclination, DamageResistanceValue);
+        /// <summary>
+        /// Adds the given value to the current value of the given resistance. Value can be negative. The given resistance will be created if it did not exist.
+        /// </summary>
+        /// <returns>New value of the given resistance after the addition.</returns>
         DamageResistanceValue AddValue(DamageTypeInclination, DamageResistanceValue);
 
         friend class Battler;
@@ -28,13 +36,26 @@ namespace AWE {
 
     public:
         DamageResistances();
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="">Map to use for resistances. Note this parameter is moved into the initialized object.</param>
         DamageResistances(DamageResistanceMap&);
+        /// <summary>
+        /// Constructor. Initializes resistances for all types and inclinations given, and sets them to 0.
+        /// </summary>
         DamageResistances(const DamageTypeMap&, const DamageInclinationMap&);
+        /// <summary>
+        /// Constructor. Initializes resistances for all types and inclinations given, and copies their values from the given map. None of the given maps are modified.
+        /// </summary>
         DamageResistances(const DamageTypeMap&, const DamageInclinationMap&, const DamageResistanceMap&);
 
+        /// <returns>const reference to the internal map.</returns>
         const DamageResistanceMap& map() const;
 
+        /// <returns>Value of the resistance for the given type and inclination.</returns>
         DamageResistanceValue GetValue(DamageTypeKey, DamageInclinationKey) const;
+        /// <returns>Value of the resistance for the given type and inclination.</returns>
         DamageResistanceValue GetValue(DamageTypeInclination) const;
 
         class const_iterator {
@@ -60,7 +81,9 @@ namespace AWE {
             DamageResistanceMap::const_iterator _itr;
         };
 
+        /// <returns>const iterator to the first resistance value pair in this object.</returns>
         const_iterator begin() const;
+        /// <returns>const iterator to the spot in memory behind the last resistance value pair in this object. Attempting access from this address will result in undefined behavior.</returns>
         const_iterator end() const;
     };
 }

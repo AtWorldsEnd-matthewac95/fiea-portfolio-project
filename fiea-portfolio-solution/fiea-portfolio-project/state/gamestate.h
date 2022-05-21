@@ -62,16 +62,38 @@ namespace AWE {
         GameStateStep _step;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState();
 
+        /// <returns>State type.</returns>
         virtual GameStateType stateType() const;
+        /// <returns>Current step.</returns>
         GameStateStep step() const;
+        /// <returns>Is this state done with its work?</returns>
         bool isDone() const { return _step == GameStateStep::DONE; }
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         virtual bool Begin();
+        /// <summary>
+        /// Behavior to execute when the current step is PROCESSING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         virtual bool Process();
+        /// <summary>
+        /// Behavior to execute when the current step is ENDING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         virtual bool End();
 
+        /// <summary>
+        /// Calls the appropriate behavior based on the current step.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Update() {
             switch (_step) {
             case GameStateStep::BEGINNING:
@@ -90,6 +112,10 @@ namespace AWE {
             return true;
         }
 
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         virtual bool ResetSteps();
     };
 
@@ -104,6 +130,7 @@ namespace AWE {
     /// </summary>
     class GameState_Close : public GameState {
     public:
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::CLOSE; }
     };
 
@@ -123,12 +150,19 @@ namespace AWE {
         std::unique_ptr<sf::Clock> _timer;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_Scene_FadeIn();
         GameState_Scene_FadeIn(sf::RectangleShape&, short);
 
+        /// <summary>
+        /// Time in microseconds between each increment of the fade box transperancy.
+        /// </summary>
         static const unsigned long FADE_TICK;
 
         const sf::RectangleShape* fadebox() const { return _fadebox; }
+        /// <returns>Amount of transperancy the fadebox gains each "tick" (See FADE_TICK). Note transperancy is a value between 0U and 255U.</returns>
         short speed() const { return _speed; }
 
         sf::RectangleShape* fadebox() { return _fadebox; }
@@ -136,10 +170,23 @@ namespace AWE {
         sf::RectangleShape* fadebox(sf::RectangleShape& newval) { sf::RectangleShape* oldval = _fadebox; _fadebox = &newval; return oldval; }
         short speed(short newval) { short oldval = _speed; _speed = newval; return oldval; }
 
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::SCENE_FADEIN; }
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
+        /// <summary>
+        /// Behavior to execute when the current step is PROCESSING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Process() override;
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ResetSteps() override;
     };
 
@@ -156,12 +203,19 @@ namespace AWE {
         std::unique_ptr<sf::Clock> _timer;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_Scene_FadeOut();
         GameState_Scene_FadeOut(sf::RectangleShape&, short);
 
+        /// <summary>
+        /// Time in microseconds between each decrement of the fade box transperancy.
+        /// </summary>
         static const unsigned long FADE_TICK;
 
         const sf::RectangleShape* fadebox() const { return _fadebox; }
+        /// <returns>Amount of transperancy the fadebox loses each "tick" (See FADE_TICK). Note transperancy is a value between 0U and 255U.</returns>
         short speed() const { return _speed; }
 
         sf::RectangleShape* fadebox() { return _fadebox; }
@@ -169,10 +223,23 @@ namespace AWE {
         sf::RectangleShape* fadebox(sf::RectangleShape& newval) { sf::RectangleShape* oldval = _fadebox; _fadebox = &newval; return oldval; }
         short speed(short newval) { short oldval = _speed; _speed = newval; return oldval; }
 
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::SCENE_FADEOUT; }
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
+        /// <summary>
+        /// Behavior to execute when the current step is PROCESSING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Process() override;
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ResetSteps() override;
     };
 
@@ -188,6 +255,9 @@ namespace AWE {
         GameSceneTransitioner* _scenes;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_Scene_Music();
         GameState_Scene_Music(GameSFMLStorage&, GameSceneTransitioner&);
 
@@ -199,9 +269,18 @@ namespace AWE {
         GameSceneTransitioner* scenes() { return _scenes; }
         GameSceneTransitioner* scenes(GameSceneTransitioner& newval) { GameSceneTransitioner* oldval = _scenes; _scenes = &newval; return oldval; }
 
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::SCENE_MUSIC; }
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ResetSteps() override;
     };
 
@@ -219,6 +298,9 @@ namespace AWE {
         GameBattleInfo* _battle;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_Battle_AISkillSelect();
         GameState_Battle_AISkillSelect(GameBattleInfo&);
 
@@ -226,11 +308,28 @@ namespace AWE {
 
         GameBattleInfo* battle(GameBattleInfo&);
 
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::BATTLE_AISKILLSELECT; }
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
+        /// <summary>
+        /// Behavior to execute when the current step is PROCESSING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Process() override;
+        /// <summary>
+        /// Behavior to execute when the current step is ENDING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool End() override;
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ResetSteps() override;
     };
 
@@ -247,9 +346,15 @@ namespace AWE {
         std::unique_ptr<sf::Clock> _timer;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_Battle_SkillName();
         GameState_Battle_SkillName(TextBox&);
 
+        /// <summary>
+        /// Amount of time this state will wait before finishing.
+        /// </summary>
         static const unsigned int DEFAULT_DISPLAY_MILLIS;
 
         const TextBox* textbox() const;
@@ -259,10 +364,23 @@ namespace AWE {
         TextBox* textbox(TextBox&);
         Skill_shptr skill(Skill_shptr);
 
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::BATTLE_SKILLNAME; }
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
+        /// <summary>
+        /// Behavior to execute when the current step is PROCESSING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Process() override;
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ResetSteps() override;
     };
 
@@ -285,11 +403,20 @@ namespace AWE {
         bool _isAcknowledged;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_Battle_DamageCalculation();
         GameState_Battle_DamageCalculation(const DamageCalculator&, TextBox& damagetext);
         GameState_Battle_DamageCalculation(const DamageCalculator&, TextBox& damagetext, TextBox& prompttext);
 
+        /// <summary>
+        /// Amount of time in milliseconds the state will wait before displaying the input prompt.
+        /// </summary>
         static const unsigned int DEFAULT_PROMPT_WAIT_MILLIS;
+        /// <summary>
+        /// Message displayed by the input prompt. Should inform the player how to dismiss the damage display text.
+        /// </summary>
         static const std::string DEFAULT_PROMPT_MESSAGE;
 
         const DamageCalculator* calc() const;
@@ -309,14 +436,35 @@ namespace AWE {
         TextBox* skilltext(TextBox&);
         const BattlerDecision* decision(const BattlerDecision&);
 
+        /// <summary>
+        /// When the damage display text is being displayed, the player can press any key to dismiss it. This function is used to indicate the player has initiated this process.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. If false is returned, the state may not be in the correct step for acknowledgement.</returns>
+        bool Acknowledge();
+
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::BATTLE_DAMAGECALCULATION; }
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
+        /// <summary>
+        /// Behavior to execute when the current step is PROCESSING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Process() override;
+        /// <summary>
+        /// Behavior to execute when the current step is ENDING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool End() override;
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ResetSteps() override;
-
-        bool Acknowledge();
     };
 
 
@@ -333,6 +481,9 @@ namespace AWE {
         AWESprite* _targetsprite;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_Battle_SkillAnimation();
         GameState_Battle_SkillAnimation(sf::Sound&, AWESprite& skill);
 
@@ -349,11 +500,28 @@ namespace AWE {
         AWESprite* skillsprite(AWESprite&);
         AWESprite* targetsprite(AWESprite&);
 
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::BATTLE_SKILLANIMATION; }
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
+        /// <summary>
+        /// Behavior to execute when the current step is PROCESSING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Process() override;
+        /// <summary>
+        /// Behavior to execute when the current step is ENDING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool End() override;
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ResetSteps() override;
     };
 
@@ -371,6 +539,9 @@ namespace AWE {
         std::unique_ptr<sf::Sound> _selectSound;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_Battle_PlayerSkillSelect();
         GameState_Battle_PlayerSkillSelect(BattleMenu&, GameBattleInfo&);
         GameState_Battle_PlayerSkillSelect(BattleMenu&, GameBattleInfo&, const sf::SoundBuffer&);
@@ -385,11 +556,28 @@ namespace AWE {
         GameBattleInfo* battle(GameBattleInfo&);
         void selectSound(const sf::SoundBuffer&);
 
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::BATTLE_PLAYERSKILLSELECT; }
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
+        /// <summary>
+        /// Behavior to execute when the current step is PROCESSING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Process() override;
+        /// <summary>
+        /// Behavior to execute when the current step is ENDING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool End() override;
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ResetSteps() override;
     };
 
@@ -409,9 +597,15 @@ namespace AWE {
         void Reset();
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_Battle_Monologue();
         GameState_Battle_Monologue(TextBox&);
 
+        /// <summary>
+        /// String used to inform the player the monologue can be skipped.
+        /// </summary>
         static const std::string SKIP_STRING;
 
         bool thomas() const;
@@ -422,13 +616,34 @@ namespace AWE {
         TextBox* prompt(TextBox&);
         bool isReadyToSkip(bool);
 
+        /// <summary>
+        /// Used to indicate the player may want to skip the dialogue.
+        /// </summary>
+        /// <returns>true if the input was received, false otherwise. If false is returned, the state may not be in the correct step for skipping.</returns>
         bool Skip();
 
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::BATTLE_MONOLOGUE; }
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
+        /// <summary>
+        /// Behavior to execute when the current step is PROCESSING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Process() override;
+        /// <summary>
+        /// Behavior to execute when the current step is ENDING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool End() override;
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ResetSteps() override;
     };
 
@@ -448,14 +663,21 @@ namespace AWE {
         unsigned short _speed;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_Battle_PlayerWon();
         GameState_Battle_PlayerWon(AWESprite&, const sf::SoundBuffer&, sf::Color, unsigned short);
 
+        /// <summary>
+        /// Amount of time in microseconds between the enemy sprite gaining transperancy.
+        /// </summary>
         static const unsigned long FADE_TICK;
 
         const AWESprite* enemySprite() const;
         const sf::Sound* defeatSound() const;
         const sf::Color& fadeColor() const;
+        /// <returns>Amount of transperancy the fadebox gains each "tick" (See FADE_TICK). Note transperancy is a value between 0U and 255U.</returns>
         unsigned short speed() const;
 
         AWESprite* enemySprite(AWESprite&);
@@ -463,11 +685,28 @@ namespace AWE {
         sf::Color fadeColor(sf::Color);
         unsigned short speed(unsigned short);
 
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::BATTLE_PLAYERWON; }
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
+        /// <summary>
+        /// Behavior to execute when the current step is PROCESSING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Process() override;
+        /// <summary>
+        /// Behavior to execute when the current step is ENDING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool End() override;
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ResetSteps() override;
     };
 
@@ -482,9 +721,15 @@ namespace AWE {
         bool _isAcknowledged;
         TextBox* _prompt;
 
+        /// <summary>
+        /// Backs up the reset behavior. Used because more than one step function can initiate this reset behavior.
+        /// </summary>
         void Reset();
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_Battle_PlayerLost();
         GameState_Battle_PlayerLost(TextBox&);
 
@@ -493,12 +738,29 @@ namespace AWE {
 
         TextBox* prompt(TextBox&);
 
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::BATTLE_PLAYERLOST; }
 
+        /// <summary>
+        /// Used to indicate the player has acknowledged the defeat message.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. If false is returned, the state may not be in the correct step for acknowledgement.</returns>
         bool Acknowledge();
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
+        /// <summary>
+        /// Behavior to execute when the current step is PROCESSING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Process() override;
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ResetSteps() override;
     };
 
@@ -512,18 +774,25 @@ namespace AWE {
     class GameState_MachineLevelUp_SetSelect;
 
     /// <summary>
-    /// State responsible for finding the characters who are to be levelled up.
+    /// State responsible for finding the characters who are to be leveled up.
     /// </summary>
     class GameState_LevelUp_LoadCharacters : public GameState {
     private:
         GameXLOStorage* _xlo;
         std::unordered_map<GameTextureType, Battler_shptr> _characters;
 
+        /// <summary>
+        /// Used to get the characters from the XLO storage.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool RefreshCharacters();
 
         friend class GameState_MachineLevelUp_SetSelect;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_LevelUp_LoadCharacters();
         GameState_LevelUp_LoadCharacters(GameXLOStorage&);
 
@@ -532,8 +801,13 @@ namespace AWE {
 
         GameXLOStorage* xlo(GameXLOStorage&);
 
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::LEVELUP_LOADCHARACTERS; }
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
     };
 
@@ -551,9 +825,17 @@ namespace AWE {
         std::unique_ptr<sf::Sound> _cursorSound;
         std::unique_ptr<sf::Sound> _selectSound;
 
+        /// <summary>
+        /// Extracts the appropriate elemental affinity from the current battler using the group key and damage type given.
+        /// </summary>
+        /// <param name="output">Output parameter. If successful, this will be set to the extracted elemental affinity.</param>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ExtractElement(SkillElementGroupKey, DamageTypeKey, ElementalAffinityKey& output);
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes current step to BEGINNING.
+        /// </summary>
         GameState_LevelUp_Select();
         GameState_LevelUp_Select(AWESprite& menu);
         GameState_LevelUp_Select(AWESprite& menu, const sf::SoundBuffer& cursor, const sf::SoundBuffer& select);
@@ -573,16 +855,49 @@ namespace AWE {
         void cursorSound(const sf::SoundBuffer&);
         void selectSound(const sf::SoundBuffer&);
 
+        /// <returns>State type.</returns>
         GameStateType stateType() const override { return GameStateType::LEVELUP_SELECT; }
 
+        /// <summary>
+        /// Moves the skill selection cursor down.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. If false is returned, the cursor may already be over the bottom element.</returns>
         bool IncrementMenu();
+        /// <summary>
+        /// Moves the skill selection cursor up.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. If false is returned, the cursor may already be over the top element.</returns>
         bool DecrementMenu();
+        /// <summary>
+        /// Locks the cursor to its current position and confirms the upgrade its over as the selection.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ConfirmSelection();
+        /// <summary>
+        /// Releases the selection allowing the cursor to move again.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ReleaseSelection();
 
+        /// <summary>
+        /// Behavior to execute when the current step is BEGINNING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Begin() override;
+        /// <summary>
+        /// Behavior to execute when the current step is PROCESSING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool Process() override;
+        /// <summary>
+        /// Behavior to execute when the current step is ENDING.
+        /// </summary>
+        /// <returns>true if successful, false otherwise. Returning true does not necessarily guarantee the current step changed.</returns>
         bool End() override;
+        /// <summary>
+        /// Resets the state back to its initial state, occasionally undoing the work it did.
+        /// </summary>
+        /// <returns>true if successful, false otherwise.</returns>
         bool ResetSteps() override;
     };
 }

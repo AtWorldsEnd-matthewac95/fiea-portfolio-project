@@ -92,7 +92,7 @@ namespace AWE {
     }
 
     const SkillElementList& SkillElementGroup::elements() const { return _elements; }
-    const SkillElementGroupList& SkillElementGroup::groups() const { return IsValid() && _isGroups ? *_groups : SkillElementGroupList(); }
+    const SkillElementGroupList* SkillElementGroup::groups() const { return _groups.get(); }
 
     bool SkillElementGroup::Equals(const AbbreviatedKey& other) const {
         bool isEqual = false;

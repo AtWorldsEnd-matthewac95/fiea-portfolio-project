@@ -16,16 +16,22 @@ namespace AWE {
         BattlerInstance_shptr _target;
 
     public:
+        /// <summary>
+        /// Constructor. Represents the following: `source` is using `skill` on `target`.
+        /// </summary>
         BattlerDecision(Skill_shptr, BattlerInstance_shptr source, BattlerInstance_shptr target);
 
+        /// <returns>const reference to the skill being used by `source`.</returns>
         const Skill_shptr& skill() const;
+        /// <returns>const reference to the battler instance using the skill.</returns>
         const BattlerInstance_shptr& source() const;
+        /// <returns>const reference to the battler instance which is the target of the skill.</returns>
         const BattlerInstance_shptr& target() const;
     };
 
     typedef std::vector<BattlerDecision> BattlerDecisionList;
     /// <summary>
-    /// Map which orders battler decisions based on priority. Battlers with a lower priority go earlier in the turn.
+    /// Map which orders battler decisions based on priority. Battlers with a lower priority value go earlier in the turn.
     /// Some battlers may share priority values, so a first-come-first-served list is used to resolve those conflicts.
     /// </summary>
     typedef std::map<unsigned short, BattlerDecisionList> BattlerDecisionOrdering;

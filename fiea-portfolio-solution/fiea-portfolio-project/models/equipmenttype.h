@@ -11,12 +11,22 @@ namespace AWE {
     /// </summary>
     class EquipmentType : public AbbreviatedKey {
     public:
+        /// <summary>
+        /// Default constructor. Initializes the object with an empty name and an invalid ABRV.
+        /// </summary>
         EquipmentType();
         EquipmentType(std::string name, ABRV abrv);
 
+        /// <summary>
+        /// Any EquipmentType which is equivalent to this object is invalid.
+        /// </summary>
         static const EquipmentType INVALID;
 
+        /// <param name="other">The other AbbreviatedKey object.</param>
+        /// <returns>Equivalence to the other AbbreviatedKey.</returns>
         bool Equals(const AbbreviatedKey& other) const override;
+        /// <param name="other">The other EquipmentType object.</param>
+        /// <returns>Equivalence to the other EquipmentType.</returns>
         bool Equals(const EquipmentType& other) const;
     };
 

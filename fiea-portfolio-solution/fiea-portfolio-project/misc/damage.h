@@ -38,7 +38,9 @@ namespace AWE {
     public:
         DamageBaseDamageValue(DamageInclination_shptr, float);
 
+        /// <returns>Value of the base damage.</returns>
         float value() const;
+        /// <returns>const reference to the base damage inclination.</returns>
         const DamageInclination_shptr& inclination() const;
     };
 
@@ -54,14 +56,22 @@ namespace AWE {
     public:
         DamageValues(DamageBaseDamageValue&, DamageValueMap&);
 
+        /// <returns>Sum of all subtotals.</returns>
         float total() const;
+        /// <returns>const reference to the base damage.</returns>
         const DamageBaseDamageValue& base() const;
+        /// <returns>const reference to the subtotals.</returns>
         const DamageValueMap& subtotals() const;
 
+        /// <returns>Returns the value of a specific total indicated by damage type and inclination.</returns>
         float GetSubtotal(DamageTypeInclination) const;
+        /// <returns>Creates a map of subtotals keyed by inclinations.</returns>
         DamageValueSubmap CreateInclinationSubtotals() const;
+        /// <returns>Creates a map of subtotals of a specific damage type keyed by inclinations.</returns>
         DamageValueSubmap CreateInclinationSubtotals(DamageTypeKey) const;
+        /// <returns>Creates a map of subtotals keyed by damage types.</returns>
         DamageValueSubmap CreateTypeSubtotals() const;
+        /// <returns>Creates a map of subtotals of a specific inclination keyed by damage types.</returns>
         DamageValueSubmap CreateTypeSubtotals(DamageInclinationKey) const;
     };
 
@@ -78,9 +88,13 @@ namespace AWE {
     public:
         Damage(DamageValuesList&);
 
+        /// <returns>The total amount of damage.</returns>
         DamageValueFinalTotal final() const;
+        /// <returns>const reference to the values.</returns>
         const DamageValuesList& values() const;
 
+        /// <param name="damageTypes">Map which can convert damage type keys to qualified damage type objects. Used to get string forms of damage types.</param>
+        /// <returns>A string representation of this object.</returns>
         std::string ToString(const DamageTypeMap& damageTypes) const;
     };
 
@@ -99,16 +113,25 @@ namespace AWE {
     public:
         DamageCalculator(const GameLOVStorage&, const GameXLOStorage&);
 
+        /// <summary>This number * 2.5 should be roughly what a "late-game" affinity value should look like.</summary>
         static const unsigned int ELEM_THRESHOLD_CONSTANT;
+        /// <summary>Helps determine minumum multiplier for nonpenetrating damage. The higher this number is, each point of affinity will be less effective at raising the minimum.</summary>
         static const float ELEMTHRESH_MULTIP_CONSTANT;
+        /// <summary>Maximum multiplier for bonuses from nonpenetrating damage.</summary>
         static const float NONPEN_BONUS_MAX;
+        /// <summary>Needs to be between or equal to 0.0f and/or 1.0f. The amount of reduction penetrating damage ignores.</summary>
         static const float PENETRATION_EFFECTIVENESS;
+        /// <summary>Should be roughly double the highest expected value for a battler stat.</summary>
         static const float REDUCTION_CONSTANT;
+        /// <summary>Attacking stats must be (1 + this number) times greater than their defensive counterparts to achieve parity.</summary>
         static const float RESIDUAL_CONSTANT;
 
+        /// <returns>const pointer to the LOV storage this damage calculator uses.</returns>
         const GameLOVStorage* lov() const;
+        /// <returns>const pointer to the XLO storage this damage calculator uses.</returns>
         const GameXLOStorage* xlo() const;
 
+        /// <returns>Resultant damage from attacker using skill on defender.</returns>
         Damage CalculateDamage(const Skill_shptr& skill, const BattlerInstance_shptr& attacker, const BattlerInstance_shptr& defender) const;
     };
 }

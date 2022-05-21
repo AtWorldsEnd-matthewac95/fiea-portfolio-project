@@ -34,45 +34,6 @@ namespace AWE {
         return output;
     }
 
-    const Skill_shptr& GameXLOStorage::GetSkill(const SkillKey& key) const {
-        Skill_shptr skill;
-
-        if (_isInitialized) {
-            auto found = _skills.find(key);
-            if (found != _skills.end()) {
-                skill = found->second;
-            }
-        }
-
-        return skill;
-    }
-
-    const Equipment_shptr& GameXLOStorage::GetEquipment(const EquipmentKey& key) const {
-        Equipment_shptr equip;
-
-        if (_isInitialized) {
-            auto found = _equipment.find(key);
-            if (found != _equipment.end()) {
-                equip = found->second;
-            }
-        }
-
-        return equip;
-    }
-
-    const Battler_shptr& GameXLOStorage::GetBattler(const BattlerKey& key) const {
-        Battler_shptr battler;
-
-        if (_isInitialized) {
-            auto found = _battlers.find(key);
-            if (found != _battlers.end()) {
-                battler = found->second;
-            }
-        }
-
-        return battler;
-    }
-
     Battler_shptr GameXLOStorage::GetBattler(const BattlerKey& key) {
         Battler_shptr battler;
 

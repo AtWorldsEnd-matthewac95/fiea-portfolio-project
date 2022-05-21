@@ -20,12 +20,20 @@ namespace AWE {
         DamageInclination_shptr _inclination;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes the object with 0 value and an invalid inclination.
+        /// </summary>
         SkillBaseDamage();
         SkillBaseDamage(int, DamageInclination_shptr);
 
+        /// <summary>
+        /// Any SkillBaseDamage which is equivalent to this object is invalid.
+        /// </summary>
         static const SkillBaseDamage INVALID;
 
+        /// <returns>Value of the base damage.</returns>
         int value() const;
+        /// <returns>shared_ptr to this base damage's inclination.</returns>
         DamageInclination_shptr inclination() const;
     };
 
@@ -43,16 +51,29 @@ namespace AWE {
         SkillElementGroup_shptr _group;
 
     public:
+        /// <summary>
+        /// Initializes the object with a skill element, making this NOT a group binding.
+        /// </summary>
         SkillElementBinding(bool isPenetrating, float scaling, DamageInclination_shptr inclination, DamageType_shptr damageType, SkillElement_shptr element);
+        /// <summary>
+        /// Initializes the object with a skill element group, making this a group binding.
+        /// </summary>
         SkillElementBinding(bool isPenetrating, float scaling, DamageInclination_shptr inclination, DamageType_shptr damageType, SkillElementGroup_shptr group);
 
+        /// <returns>Is this portion of the skill penetrating damage?</returns>
         bool isPenetrating() const;
+        /// <returns>Percentage from 0.f to 1.f of the stat-scaled damage which should be given to this binding.</returns>
         float scaling() const;
+        /// <returns>shared_ptr to this object's inclination.</returns>
         DamageInclination_shptr inclination() const;
+        /// <returns>shared_ptr to this object's damage type.</returns>
         DamageType_shptr damageType() const;
+        /// <returns>shared_ptr to this object's skill element, if it exists. Otherwise, returns an empty shared_ptr.</returns>
         SkillElement_shptr element() const;
+        /// <returns>shared_ptr to this object's skill element group, if it exists. Otherwise, returns an empty shared_ptr.</returns>
         SkillElementGroup_shptr group() const;
 
+        /// <returns>Does this object use a skill element group for its binding?</returns>
         bool IsGroupBinding() const;
     };
 
@@ -68,8 +89,11 @@ namespace AWE {
     public:
         SkillStatScaling(float value, DamageInclination_shptr inclination, BattlerStat_shptr battlerStat);
 
+        /// <returns>Value from 0.f to 1.f of this scaling. Example: if the stat is Strength and the value is 0.5f, the skill will use 50% of the Strength stat in its calculation.</returns>
         float value() const;
+        /// <returns>shared_ptr to the inclination of this object.</returns>
         DamageInclination_shptr inclination() const;
+        /// <returns>shared_ptr to the battler stat of this object.</returns>
         BattlerStat_shptr battlerStat() const;
     };
 
@@ -85,13 +109,21 @@ namespace AWE {
         std::set<SkillElementGroupKey> _elementGroups;
 
     public:
+        /// <summary>
+        /// Constructor. Initializes the object with only base damage.
+        /// </summary>
         SkillDamage(SkillBaseDamage baseDamage, DamageInclinationKey inclinationKey);
         SkillDamage(SkillBaseDamage baseDamage, DamageInclinationKey inclinationKey, std::vector<SkillStatScaling>& statScalings, std::vector<SkillElementBinding>& elementBindings);
 
+        /// <returns>const reference to this object's base damage.</returns>
         const SkillBaseDamage& baseDamage() const;
+        /// <returns>Key of this object's inclination.</returns>
         DamageInclinationKey inclinationKey() const;
+        /// <returns>const reference to this object's stat scalings.</returns>
         const std::vector<SkillStatScaling>& statScalings() const;
+        /// <returns>const reference to this object's element bindings.</returns>
         const std::vector<SkillElementBinding>& elementBindings() const;
+        /// <returns>const reference to the list of all skill element groups used for this object's damage calculation.</returns>
         const std::set<SkillElementGroupKey>& elementGroups() const;
     };
 
@@ -107,16 +139,28 @@ namespace AWE {
         std::string _soundFilename;
 
     public:
-        Skill(std::string name, unsigned int textureIndex = 0U, std::string soundFilename = "");
+        /// <summary>
+        /// Constructor. Initializes the object without any damage, which is valid.
+        /// </summary>
+        Skill(std::string name, unsigned int textureIndex = 0U, std::string soundFlename = "");
         Skill(std::string name, std::vector<SkillDamage>& damages, unsigned int textureIndex = 0U, std::string soundFilename = "");
 
+        /// <returns>const reference to this skill's name.</returns>
         const std::string& name() const;
+        /// <returns>const reference to this skill's damages.</returns>
         const std::vector<SkillDamage>& damages() const;
+        /// <returns>const reference to the list of all skill element groups used for this skill's damage calculation.</returns>
         const std::set<SkillElementGroupKey>& elementGroups() const;
+        /// <returns>The texture index corresponding to the correct image for this skill.</returns>
         unsigned int textureIndex() const;
+        /// <returns>const reference to this skill's sound's file name.</returns>
         const std::string& soundFilename() const;
 
+        /// <param name="">New value for the texture index.</param>
+        /// <returns>Old value for the texture index.</returns>
         unsigned int textureIndex(unsigned int);
+        /// <param name="">New value for this skill's sound's filename.</param>
+        /// <returns>Old value for this skill's sound's filename.</returns>
         std::string soundFilename(std::string);
     };
 

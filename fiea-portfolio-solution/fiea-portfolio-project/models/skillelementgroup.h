@@ -29,22 +29,57 @@ namespace AWE {
         std::unique_ptr<SkillElementGroupList> _groups;
 
     public:
+        /// <summary>
+        /// Default constructor. Initializes the object with an empty name and an invalid ABRV.
+        /// </summary>
         SkillElementGroup();
+        /// <summary>
+        /// Constructor. Initialize must be used on this object to give it elements.
+        /// </summary>
         SkillElementGroup(std::string name, ABRV abrv);
+        /// <summary>
+        /// Constructor. Initializes the group using the given element list. IsValid can be used to confirm the initialization was successful.
+        /// </summary>
         SkillElementGroup(std::string name, ABRV abrv, SkillElementList elements);
+        /// <summary>
+        /// Constructor. Initializes the group using the given group list. IsValid can be used to confirm the initialization was successful.
+        /// </summary>
         SkillElementGroup(std::string name, ABRV abrv, SkillElementGroupList groups);
 
+        /// <summary>
+        /// Any SkillElementGroup which is equivalent to this object is invalid.
+        /// </summary>
         static const SkillElementGroup INVALID;
 
+        /// <returns>Is this a group of groups?</returns>
         bool isGroups() const;
+        /// <returns>const reference to internal skill element list of this group.</returns>
         const SkillElementList& elements() const;
-        const SkillElementGroupList& groups() const;
+        /// <returns>If this is a group of groups, const pointer to internal group list. Otherwise, returns nullptr.</returns>
+        const SkillElementGroupList* groups() const;
 
+        /// <returns>Was this group properly initialized?</returns>
         bool IsValid() const;
+        /// <summary>
+        /// Initializes the group using the internal group list. This overload of this method is only useable on groups of groups.
+        /// </summary>
+        /// <returns>True if initialization was successful, false otherwise.</returns>
         bool Initialize();
+        /// <summary>
+        /// Initializes the group using the given element list.
+        /// </summary>
+        /// <returns>True if initialization was successful, false otherwise.</returns>
         bool Initialize(SkillElementList elements);
+        /// <summary>
+        /// Initializes the group using the given group list.
+        /// </summary>
+        /// <returns>True if initialization was successful, false otherwise.</returns>
         bool Initialize(SkillElementGroupList groups);
+        /// <param name="other">The other AbbreviatedKey object.</param>
+        /// <returns>Equivalence to the other AbbreviatedKey.</returns>
         bool Equals(const AbbreviatedKey& other) const override;
+        /// <param name="other">The other SkillElementGroup object.</param>
+        /// <returns>Equivalence to the other SkillElementGroup.</returns>
         bool Equals(const SkillElementGroup& other) const;
 
         class const_iterator {
@@ -70,7 +105,9 @@ namespace AWE {
             SkillElementList::const_iterator _itr;
         };
 
+        /// <returns>const iterator to the first element in this group.</returns>
         const_iterator begin() const;
+        /// <returns>const iterator to the spot in memory behind the last element in this group. Attempting access from this address will result in undefined behavior.</returns>
         const_iterator end() const;
     };
 

@@ -17,6 +17,7 @@ namespace AWE {
         AbbreviatedKey();
         AbbreviatedKey(std::string name, ABRV abrv);
 
+        /// <returns>const reference to the name of this key.</returns>
         const std::string& name() const;
 
         /// <returns>The internal ABRV object in string form.</returns>

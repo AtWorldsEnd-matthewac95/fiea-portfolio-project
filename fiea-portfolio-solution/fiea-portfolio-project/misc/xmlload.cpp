@@ -51,7 +51,10 @@ namespace AWE {
             , _lov(&store)
             , _nullBaseDamageInclination(std::move(nullBaseDamageInclination))
             , _currentBattlerPriority(0)
-            , _currentSkillTextureIndex(0) {}
+            , _currentSkillTextureIndex(0)
+            , _currentBattlerTextureIndex(0)
+            , _currentBattlerTextureType(0)
+            , _isCurrentBattlerCharacter(false) {}
 
         LoadDataVisitor::LoadDataVisitor(
             SkillMap* skillMap,
@@ -74,7 +77,10 @@ namespace AWE {
             , _lov(&store)
             , _nullBaseDamageInclination(std::move(nullBaseDamageInclination))
             , _currentBattlerPriority(0)
-            , _currentSkillTextureIndex(0) {}
+            , _currentSkillTextureIndex(0)
+            , _currentBattlerTextureIndex(0)
+            , _currentBattlerTextureType(0)
+            , _isCurrentBattlerCharacter(false) {}
 
         void LoadDataVisitor::LogToCout(const std::string& message) const {
             std::cout << "LoadDataVisitor ==> " << message << "\n";
