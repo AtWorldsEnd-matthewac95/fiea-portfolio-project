@@ -156,13 +156,13 @@ namespace AWE {
     Damage DamageCalculator::CalculateDamage(const Skill_shptr& skill, const BattlerInstance_shptr& attacker, const BattlerInstance_shptr& defender) const {
         DamageValuesList values;
         DamageInclinationMap damageInclinations = _lov->damageInclinations();
-        std::unordered_map<DamageInclinationKey, float> damageReductions;
 
         std::vector<SkillDamage> skillDamages = skill->damages();
         for (const SkillDamage& skillDamage : skillDamages) {
             std::vector<SkillElementBinding> elementBindings = skillDamage.elementBindings();
             std::vector<SkillStatScaling> statScalings = skillDamage.statScalings();
             DamageValueMap subtotals;
+            std::unordered_map<DamageInclinationKey, float> damageReductions;
 
             for (const DamageInclinationMap::value_type& damageInclination : damageInclinations) {
                 DamageInclinationKey skillDamageInclination = (skillDamage.inclinationKey() == DamageInclination::AUTO_KEY.AsLong()) ? damageInclination.first : skillDamage.inclinationKey();
