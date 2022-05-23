@@ -22,6 +22,9 @@ enum class InputType : unsigned short {
 };
 
 int main() {
+
+    // Storage initialization. All "storage" objects are loaded and initialized.
+
     AWE::GameLOVStorage lov;
     if (!lov.Initialize("res")) {
         std::cout << "List of values failed to initialize.\n";
@@ -48,6 +51,9 @@ int main() {
         return 1;
     }
 
+
+    // Scene initialization. All scenes are created and inserted into the scene transitioner.
+
     AWE::GameSceneTransitioner scenes(sfmls);
     AWE::GameSceneInfo scene;
 
@@ -67,21 +73,40 @@ int main() {
     scene.sprites()->push_back(AWE::GameTextureType::ENEMY);
     scenes.AddScene(scene);
 
+
+    // State machine initialization. State machine is configured for the beginning of the game, which due to a special state will proceed into the battle configuration automatically.
+
     sf::Sound currentSound;
     AWE::GameStateMachine states(xlo, scenes, battle, sfmls, currentSound);
     states.ConfigureForBeginning();
 
+
+    // Window is initialized. Hey, it's my name!
+
     sf::RenderWindow window(sf::VideoMode(AWE::AWESprite::WIDTH_BACKGROUND, AWE::AWESprite::HEIGHT_BACKGROUND), "Matthew Cummings FIEA Portfolio Project", sf::Style::Titlebar | sf::Style::Close);
     window.setSize(sf::Vector2u(window.getSize().x * 4, window.getSize().y * 4));
  
+
+    // Final helper variables created.
+
     InputType inputType = InputType::NONE;
     bool waitingForInput = true;
     bool anyInput = false;
 
+
+    // Main game loop. Once this loop is exited, the game concludes.
+
     while (window.isOpen()) {
+
+
+        // Standard SFML event polling.
+
         sf::Event ev;
         while (window.pollEvent(ev)) {
             switch (ev.type) {
+
+            // The following state ends the game. The remaining loop will continue to process the game as normal, but because `window.isOpen()` will return false now, the game is as good as finished.
+            // I could make this more clear by putting an `if (!window.isOpen()) { break; }` after the while loop, but it's cleaner if we just don't do that and the current behavior is harmless.
 
             case sf::Event::Closed:
                 window.close();
@@ -128,7 +153,13 @@ int main() {
             }
         }
 
+
+        // Ascertain the current state.
+
         AWE::GameState* currentState = states.current();
+
+
+        // Certain states respond to any input. Handle such situations here.
 
         if (anyInput) {
             if (currentState->stateType() == AWE::GameStateType::BATTLE_DAMAGECALCULATION && currentState->step() == AWE::GameStateStep::PROCESSING) {
@@ -149,16 +180,33 @@ int main() {
             anyInput = false;
         }
 
+
+        // waitingForInput is set to false if any relevant input is received. Notably, this means that pressing an unrecognized key will NOT set waitingForInput to false,
+        // while pressing any key (including an unrecognized one) WILL set anyInput to true.
+
+        // If we didn't get any relevant input, we'll set inputType to NONE for this game loop iteration.
+
         if (waitingForInput) {
             inputType = InputType::NONE;
         }
 
+
+        // We're done with the waitingForInput flag now that inputType has been set, so let's set waitingForInput back to true right away.
+
         waitingForInput = true;
+
+
+        // Since the "menu" in the level up screen is really just a sprite without any behavior built into it, we pass input through the level up state itself.
+
+        // Of course, we only retrieve the level up state if we're currently at that point in the game.
 
         AWE::GameState_LevelUp_Select* levelupState = nullptr;
         if (currentState->stateType() == AWE::GameStateType::LEVELUP_SELECT) {
             levelupState = states.GetState<AWE::GameState_LevelUp_Select>(AWE::GameStateType::LEVELUP_SELECT);
         }
+
+
+        // Handle the input type here. Note if the input type is NONE, nothing happens.
 
         switch (inputType) {
 
@@ -194,10 +242,20 @@ int main() {
 
         }
 
+
+        // The CLOSE state type is not meant to be a normal state, but is instead a way for the state machine to indicate the game should conclude.
+
         if (currentState->stateType() != AWE::GameStateType::CLOSE) {
+
+
+            // Yes, this does mean if we ever hit a STOP state, the game will just hang. This should never happen, and if it ever does it makes it easy to investigate what went wrong.
+
             if (currentState->stateType() != AWE::GameStateType::STOP) {
                 states.Update();
             }
+
+
+            // Very exciting and interesting draw commands. The order does matter, objects drawn later will appear on top of objects drawn earlier.
 
             window.clear();
 
@@ -220,6 +278,9 @@ int main() {
             window.close();
         }
     }
+
+
+    // Thanks for playing!
 
     return 0;
 }
