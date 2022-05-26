@@ -8,7 +8,7 @@ x86/Win32 is also possible, all that's needed is to copy the file `openal32.dll`
 
 Github collaborators @Guillebarq and @Ryanhb helped test that this project would build on their computers. They did not contribute code.
 
-None of the files in the external folder were created by the author of this project. See below, also see the comment header at the top of those files.
+None of the files in the `external` folder were created by the author of this project. See below, also see the comment header at the top of those files.
 
 Third party libraries used:
 * SFML - https://www.sfml-dev.org/documentation/2.5.1/
